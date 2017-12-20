@@ -9,5 +9,7 @@ public class In_Corso extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in__corso);
+
     }
+
 }
