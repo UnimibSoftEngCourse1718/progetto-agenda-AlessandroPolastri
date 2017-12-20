@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="polastri.alessandro.agendapersonale.Crea_Attivita">
+
+    <LinearLayout
+        android:layout_width="395dp"
+        android:layout_height="587dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/eattivita"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/inserisci_attivita" />
+
+        <EditText
+            android:id="@+id/edata"
+            android:layout_width="332dp"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:inputType="date"
+            android:text="@string/inserisci_data" />
+
+        <EditText
+            android:id="@+id/enota"
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/inserisci_nota" />
+
+        <Button
+            android:id="@+id/conferma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="submit"
+            android:text="@string/conferma"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

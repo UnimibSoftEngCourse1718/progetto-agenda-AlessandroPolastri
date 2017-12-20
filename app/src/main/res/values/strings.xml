@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Agenda Personale</string>
+    <string name="add">add</string>
+    <string name="attivita">Attività</string>
+    <string name="inserisci_nota">Inserisci Nota</string>
+    <string name="inserisci_data">Inserisci Data</string>
+    <string name="inserisci_attivita">Inserisci Attivita</string>
+    <string name="conferma">Conferma</string>
 </resources>
