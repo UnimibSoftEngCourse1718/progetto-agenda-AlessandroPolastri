@@ -1,20 +1,18 @@
 package polastri.alessandro.agendapersonale;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-public class Crea_Attivita extends AppCompatActivity {
+public class AggiungiAttivita extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crea__attivita);
+        setContentView(R.layout.activity_aggiungi__attivita);
     }
 
     public void submit(View v){
@@ -31,7 +29,7 @@ public class Crea_Attivita extends AppCompatActivity {
 
         Attivita a = new Attivita(x, y, z);
 
-        Intent intent = new Intent(this, In_Corso.class);
+        Intent intent = new Intent(this, Main.class);
         Bundle extras = new Bundle();
         extras.putParcelable("object_key", a);
         intent.putExtras(extras);

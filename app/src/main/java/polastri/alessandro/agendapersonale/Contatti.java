@@ -7,34 +7,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class In_Corso extends AppCompatActivity {
+public class Contatti extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_in__corso);
+        setContentView(R.layout.activity_contatti);
+
     }
 
-    public void cambia(View v){
-        Button b = (Button) findViewById(R.id.add);
+    public void aggiungi(View v){
 
-        Intent successiva = new Intent(In_Corso.this,Crea_Attivita.class);
-        startActivity(successiva);
+        Intent intent = new Intent(this, AggiungiContatto.class);
+        startActivity(intent);
+
     }
 
     @Override
     public void onResume(){
+
         super.onResume();
 
-        Attivita a = new Attivita("casa", "cosa", "male");
-        TextView titolo = (TextView) findViewById(R.id.testo);
+        Contatto c = new Contatto();
+        TextView prova = (TextView) findViewById(R.id.prova);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            a = (Attivita) extras.getParcelable("object_key");
+            c = (Contatto) extras.getParcelable("object_key");
+            prova.setText(c.toString());
         }
-
-        titolo.setText(a.toString());
-
     }
 }

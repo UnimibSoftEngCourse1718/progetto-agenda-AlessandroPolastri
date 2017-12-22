@@ -9,14 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".In_Corso">
+        <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Crea_Attivita"></activity>
+        <activity android:name=".AggiungiAttivita"
+            android:label="Aggiungi Attività"/>
+        <activity android:name=".Contatti"
+            android:label="Contatti"/>
+        <activity android:name=".AggiungiContatto"
+            android:label="Aggiungi Contatto"/>
+        <activity android:name=".AttivitaInCorso"
+            android:label="Attività in Corso"></activity>
     </application>
 
 </manifest>

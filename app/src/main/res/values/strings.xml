@@ -6,4 +6,9 @@
     <string name="inserisci_data">Inserisci Data</string>
     <string name="inserisci_attivita">Inserisci Attivita</string>
     <string name="conferma">Conferma</string>
+    <string name="contatti">Contatti</string>
+    <string name="attivit">Attività</string>
+    <string name="aggiungi">Aggiungi</string>
+    <string name="nome">Nome:</string>
+    <string name="cognome">Cognome:</string>
 </resources>

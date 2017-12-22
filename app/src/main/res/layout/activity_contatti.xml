@@ -4,23 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="polastri.alessandro.agendapersonale.In_Corso">
+    tools:context="polastri.alessandro.agendapersonale.Contatti">
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/aggiungi_contatto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:onClick="cambia"
-        android:text="@string/add"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="aggiungi"
+        android:text="@string/aggiungi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/testo"
-        android:layout_width="277dp"
-        android:layout_height="112dp"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="33dp" />
+        android:id="@+id/prova"
+        android:layout_width="287dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
