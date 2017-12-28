@@ -16,8 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AttivitaInCorso"
-            android:label="Attività in Corso"></activity>
+        <activity
+            android:name=".AttivitaInCorso"
+            android:label="Attività in Corso"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

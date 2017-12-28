@@ -5,12 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 public class DBManager {
 
     private DBHelper dbHelper;
 
     public DBManager(Context context){
+
         dbHelper = new DBHelper(context);
     }
 
@@ -27,8 +29,7 @@ public class DBManager {
 
         try{
             db.insert(Attivita.NOME_TABELLA, null, cv);
-        } catch(SQLiteException sqle){
-            }
+        } catch(SQLiteException sqle){}
     }
 
     public boolean delete(long id){
@@ -46,16 +47,16 @@ public class DBManager {
 
     public Cursor query(){
 
-        Cursor c;
+        Cursor crs;
 
         try{
 
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-            c = db.query(Attivita.NOME_TABELLA, null, null, null, null, null, null, null);
+            crs = db.query(Attivita.NOME_TABELLA, null, null, null, null, null, null, null);
         } catch(SQLiteException sqle){
             return null;
             }
-        return c;
+        return crs;
     }
 }

@@ -7,13 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String NOMEDB = "DBATTIVITA";
+    private static final String NOMEDB = "DBATTIVITA";
 
     public DBHelper(Context context){
         super(context, NOMEDB, null, 1);
     }
 
-    @Override
     public void onCreate(SQLiteDatabase db) {
         String a = "CREATE TABLE " + Attivita.NOME_TABELLA +
                 " ( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -25,8 +24,5 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(a);
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 }

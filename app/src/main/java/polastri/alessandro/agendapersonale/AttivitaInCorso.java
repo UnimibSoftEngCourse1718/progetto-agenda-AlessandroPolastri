@@ -1,6 +1,5 @@
 package polastri.alessandro.agendapersonale;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +11,9 @@ import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
-@SuppressLint("NewApi")
 public class AttivitaInCorso extends AppCompatActivity {
 
     private DBManager db = null;
@@ -48,8 +46,8 @@ public class AttivitaInCorso extends AppCompatActivity {
 
         db = new DBManager(this);
         listView = findViewById(R.id.lista);
-        Cursor c = db.query();
-        adapter = new CursorAdapter(this, c, 0){
+        Cursor crs = db.query();
+        adapter = new CursorAdapter(this, crs, 0){
 
             public View newView(Context ctx, Cursor arg1, ViewGroup arg2) {
 
@@ -70,6 +68,7 @@ public class AttivitaInCorso extends AppCompatActivity {
             }
 
             public long getItemId(int position){
+
                 Cursor cursor = adapter.getCursor();
                 cursor.moveToPosition(position);
                 return cursor.getLong(cursor.getColumnIndex(Attivita.CAMPO_ID));
@@ -77,11 +76,10 @@ public class AttivitaInCorso extends AppCompatActivity {
         };
 
         listView.setAdapter(adapter);
-
-
     }
 
     public void salva(View v){
+
         EditText eattivita = findViewById(R.id.eattivita);
         EditText edata = findViewById(R.id.edata);
         EditText eorario = findViewById(R.id.eorario);
@@ -89,8 +87,12 @@ public class AttivitaInCorso extends AppCompatActivity {
         EditText eallarme = findViewById(R.id.eallarme);
 
         if(eattivita != null && edata != null){
+
             db.save(eattivita.getEditableText().toString(), edata.getEditableText().toString(), eorario.getEditableText().toString(), enote.getEditableText().toString(), eallarme.getEditableText().toString());
+            Toast.makeText(getApplicationContext(), "Inserito!", Toast.LENGTH_LONG).show();
             adapter.changeCursor(db.query());
+        }else{
+            Toast.makeText(getApplicationContext(), "L'oggetto e la data devono essere inseriti!", Toast.LENGTH_LONG).show();
         }
     }
 }

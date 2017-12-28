@@ -23,10 +23,12 @@
         android:id="@+id/eattivita"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
+        android:hint="@string/oggetto"
         android:inputType="text"
-        android:text="@string/oggetto"
+        android:selectAllOnFocus="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista" />
 
@@ -34,10 +36,11 @@
         android:id="@+id/edata"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="7dp"
         android:ems="10"
+        android:hint="@string/data"
         android:inputType="text"
-        android:text="@string/data"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eattivita" />
 
@@ -45,10 +48,11 @@
         android:id="@+id/eorario"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
+        android:hint="@string/orario"
         android:inputType="text"
-        android:text="@string/orario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edata" />
 
@@ -56,10 +60,11 @@
         android:id="@+id/enote"
         android:layout_width="184dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
+        android:hint="@string/note"
         android:inputType="text"
-        android:text="@string/note"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista" />
 
@@ -67,7 +72,8 @@
         android:id="@+id/salva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/salva"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eallarme" />
@@ -76,10 +82,11 @@
         android:id="@+id/eallarme"
         android:layout_width="184dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
+        android:hint="@string/allarme"
         android:inputType="text"
-        android:text="@string/allarme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enote" />
 </android.support.constraint.ConstraintLayout>
