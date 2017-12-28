@@ -17,13 +17,6 @@ public class Main extends AppCompatActivity {
 
     }
 
-    public void contatti(View v){
-
-        Intent intent = new Intent(this, Contatti.class);
-        startActivity(intent);
-
-    }
-
     public void attivita(View v){
 
         Intent intent = new Intent(this, AttivitaInCorso.class);

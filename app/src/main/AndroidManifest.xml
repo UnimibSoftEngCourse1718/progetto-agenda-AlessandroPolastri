@@ -16,12 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AggiungiAttivita"
-            android:label="Aggiungi Attività"/>
-        <activity android:name=".Contatti"
-            android:label="Contatti"/>
-        <activity android:name=".AggiungiContatto"
-            android:label="Aggiungi Contatto"/>
         <activity android:name=".AttivitaInCorso"
             android:label="Attività in Corso"></activity>
     </application>

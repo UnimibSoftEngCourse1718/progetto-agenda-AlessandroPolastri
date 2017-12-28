@@ -11,4 +11,13 @@
     <string name="aggiungi">Aggiungi</string>
     <string name="nome">Nome:</string>
     <string name="cognome">Cognome:</string>
+    <string name="i_tuoi_contatti">I Tuoi Contatti:</string>
+    <string name="indietro">Indietro</string>
+    <string name="oggetto">Oggetto</string>
+    <string name="data">Data</string>
+    <string name="orario">Orario</string>
+    <string name="note">Note</string>
+    <string name="allarme">Allarme</string>
+    <string name="salva">Salva</string>
+    <string name="todo">TODO</string>
 </resources>
