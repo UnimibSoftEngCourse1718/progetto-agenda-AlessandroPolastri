@@ -11,7 +11,6 @@
     <string name="aggiungi">Aggiungi</string>
     <string name="nome">Nome:</string>
     <string name="cognome">Cognome:</string>
-    <string name="i_tuoi_contatti">I Tuoi Contatti:</string>
     <string name="indietro">Indietro</string>
     <string name="oggetto">Oggetto</string>
     <string name="data">Data</string>
@@ -20,4 +19,13 @@
     <string name="allarme">Allarme</string>
     <string name="salva">Salva</string>
     <string name="todo">TODO</string>
+    <string name="aggiungi_contatto" />
+    <string name="nome_contatto">Nome</string>
+    <string name="telefono">Telefono:</string>
+    <string name="tipo">Tipo:</string>
+    <string name="e_mail">E-Mail:</string>
+    <string name="annulla">Annulla</string>
+    <string name="rubrica">Rubrica</string>
+    <string name="credit1">Created By</string>
+    <string name="credit2">Alessandro Polastri</string>
 </resources>

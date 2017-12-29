@@ -6,28 +6,28 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-public class DBManager {
+public class DBManagerRubrica {
 
-    private DBHelper dbHelper;
+    private DBHelperRubrica dbHelper;
 
-    public DBManager(Context context){
+    public DBManagerRubrica(Context context){
 
-        dbHelper = new DBHelper(context);
+        dbHelper = new DBHelperRubrica(context);
     }
 
-    public void save(String oggetto, String data, String orario, String note, String allarme){
+    public void save(String nome, String cognome, String telefono, String email, String tipo){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(Attivita.CAMPO_OGGETTO, oggetto);
-        cv.put(Attivita.CAMPO_DATA, data);
-        cv.put(Attivita.CAMPO_ORARIO, orario);
-        cv.put(Attivita.CAMPO_NOTE, note);
-        cv.put(Attivita.CAMPO_ALLARME, allarme);
+        cv.put(Contatto.CAMPO_NOME, nome);
+        cv.put(Contatto.CAMPO_COGNOME, cognome);
+        cv.put(Contatto.CAMPO_TELEFONO, telefono);
+        cv.put(Contatto.CAMPO_EMAIL, email);
+        cv.put(Contatto.CAMPO_TIPO, tipo);
 
         try{
-            db.insert(Attivita.NOME_TABELLA, null, cv);
+            db.insert(Contatto.NOME_TABELLA, null, cv);
         } catch(SQLiteException sqle){}
     }
 
@@ -36,7 +36,7 @@ public class DBManager {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try{
-            if(db.delete(Attivita.NOME_TABELLA, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)})>0)
+            if(db.delete(Contatto.NOME_TABELLA, Contatto.CAMPO_ID + "=?", new String[]{Long.toString(id)})>0)
                 return true;
             return false;
         } catch(SQLiteException sqle){
@@ -52,10 +52,10 @@ public class DBManager {
 
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-            crs = db.query(Attivita.NOME_TABELLA, null, null, null, null, null, null, null);
+            crs = db.query(Contatto.NOME_TABELLA, null, null, null, null, null, null, null);
         } catch(SQLiteException sqle){
             return null;
-            }
+        }
         return crs;
     }
 }

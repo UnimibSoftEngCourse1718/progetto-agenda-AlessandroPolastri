@@ -14,7 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AttivitaInCorso extends AppCompatActivity {
+import polastri.alessandro.agendapersonale.R;
+
+public class Impegni extends AppCompatActivity {
 
     private DBManager db = null;
     private CursorAdapter adapter;

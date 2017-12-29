@@ -4,23 +4,24 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
     public void attivita(View v){
 
-        Intent intent = new Intent(this, AttivitaInCorso.class);
+        Intent intent = new Intent(this, Impegni.class);
         startActivity(intent);
+    }
 
+    public void rubrica(View v){
+
+        Intent intent = new Intent(this, Rubrica.class);
+        startActivity(intent);
     }
 }

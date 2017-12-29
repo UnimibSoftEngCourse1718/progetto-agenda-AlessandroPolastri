@@ -16,9 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AttivitaInCorso"
-            android:label="Attività in Corso"
+        <activity android:name=".Impegni"
+            android:label="Impegni"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Rubrica"
+            android:label="Rubrica"
             android:windowSoftInputMode="adjustPan" />
     </application>
 
