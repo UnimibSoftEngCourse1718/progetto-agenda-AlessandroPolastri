@@ -40,6 +40,7 @@ public class DBManagerRubrica {
                 return true;
             return false;
         } catch(SQLiteException sqle){
+
             return false;
         }
     }
@@ -51,11 +52,12 @@ public class DBManagerRubrica {
         try{
 
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-
             crs = db.query(Contatto.NOME_TABELLA, null, null, null, null, null, null, null);
         } catch(SQLiteException sqle){
+
             return null;
         }
+
         return crs;
     }
 }
