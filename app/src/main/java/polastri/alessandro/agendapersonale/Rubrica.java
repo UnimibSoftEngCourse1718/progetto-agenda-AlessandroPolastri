@@ -1,12 +1,11 @@
 package polastri.alessandro.agendapersonale;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -38,6 +37,7 @@ public class Rubrica extends AppCompatActivity {
         }
     };
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class Rubrica extends AppCompatActivity {
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Rubrica.this);
-                View view = getLayoutInflater().inflate(R.layout.layout_dialog_rubrica, null);
+                @SuppressLint("InflateParams") View view = getLayoutInflater().inflate(R.layout.layout_dialog_rubrica, null);
 
                 final EditText nome = view.findViewById(R.id.enome);
                 final EditText cognome = view.findViewById(R.id.ecognome);
@@ -66,7 +66,9 @@ public class Rubrica extends AppCompatActivity {
                         selezioneSpinner = (String) adapter.getItemAtPosition(pos);
                     }
 
-                    public void onNothingSelected(AdapterView<?> arg0) {}
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        throw(new UnsupportedOperationException());
+                    }
                 });
 
                 builder.setView(view);
@@ -95,6 +97,7 @@ public class Rubrica extends AppCompatActivity {
         Cursor crs = db.query();
         adapter = new CursorAdapter(this, crs, 0){
 
+            @SuppressLint("InflateParams")
             public View newView(Context ctx, Cursor arg1, ViewGroup arg2) {
 
                 return getLayoutInflater().inflate(R.layout.riga_layout_rubrica, null);
@@ -121,6 +124,7 @@ public class Rubrica extends AppCompatActivity {
                 imgbtn.setOnClickListener(clickListener);
             }
 
+            @Override
             public long getItemId(int position){
 
                 Cursor cursor = adapter.getCursor();

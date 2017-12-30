@@ -6,16 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-public class DBManagerRubrica {
+class DBManagerRubrica {
 
     private DBHelperRubrica dbHelper;
 
-    public DBManagerRubrica(Context context){
+    DBManagerRubrica(Context context){
 
         dbHelper = new DBHelperRubrica(context);
     }
 
-    public void save(String nome, String cognome, String telefono, String email, String tipo){
+    void save(String nome, String cognome, String telefono, String email, String tipo){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -28,24 +28,25 @@ public class DBManagerRubrica {
 
         try{
             db.insert(Contatto.NOME_TABELLA, null, cv);
-        } catch(SQLiteException sqle){}
+        } catch(SQLiteException sqle){
+            throw(new UnsupportedOperationException());
+        }
     }
 
-    public boolean delete(long id){
+    boolean delete(long id){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try{
-            if(db.delete(Contatto.NOME_TABELLA, Contatto.CAMPO_ID + "=?", new String[]{Long.toString(id)})>0)
-                return true;
-            return false;
+
+            return db.delete(Contatto.NOME_TABELLA, Contatto.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
         } catch(SQLiteException sqle){
 
             return false;
         }
     }
 
-    public Cursor query(){
+    Cursor query(){
 
         Cursor crs;
 
