@@ -62,8 +62,9 @@ public class Rubrica extends AppCompatActivity {
                 final EditText telefono = view.findViewById(R.id.etelefono);
                 final EditText email = view.findViewById(R.id.eemail);
                 final Spinner tipo = view.findViewById(R.id.stipo);
+                final EditText tipoPersonalizzato = view.findViewById(R.id.eaggiungiTipo);
 
-                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Rubrica.this, android.R.layout.simple_spinner_item, new String[]{"", "Amico", "Collega", "Conoscente", "Parente"});
+                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Rubrica.this, android.R.layout.simple_spinner_item, new String[]{"Nessuno", "Amico", "Collega", "Parente"});
                 tipo.setAdapter(spinnerAdapter);
                 tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -86,10 +87,19 @@ public class Rubrica extends AppCompatActivity {
 
                     public void onClick(View v) {
                         if(!nome.getText().toString().isEmpty()){
-                            db.salva(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), selezioneSpinner);
+
+                            if(!tipoPersonalizzato.getText().toString().isEmpty()){
+                            db.salva(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
                             Toast.makeText(getApplicationContext(), "Contatto inserito!", Toast.LENGTH_SHORT).show();
                             adapter.changeCursor(db.query());
                             dialog.dismiss();
+                            } else{
+                                db.salva(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), selezioneSpinner);
+                                Toast.makeText(getApplicationContext(), "Contatto inserito!", Toast.LENGTH_SHORT).show();
+                                adapter.changeCursor(db.query());
+                                dialog.dismiss();
+                            }
+
                         } else{
                             Toast.makeText(Rubrica.this, "Il nome è obbligatorio!", Toast.LENGTH_SHORT).show();
                         }
@@ -115,6 +125,7 @@ public class Rubrica extends AppCompatActivity {
                 String cognome = crs.getString(crs.getColumnIndex(Contatto.CAMPO_COGNOME));
                 String telefono = crs.getString(crs.getColumnIndex(Contatto.CAMPO_TELEFONO));
                 String email = crs.getString(crs.getColumnIndex(Contatto.CAMPO_EMAIL));
+                String tipo = crs.getString(crs.getColumnIndex(Contatto.CAMPO_TIPO));
                 TextView txt = v.findViewById(R.id.nome);
                 txt.setText(nome);
                 txt = v.findViewById(R.id.cognome);
@@ -123,6 +134,8 @@ public class Rubrica extends AppCompatActivity {
                 txt.setText(telefono);
                 txt = v.findViewById(R.id.email);
                 txt.setText(email);
+                txt = v.findViewById(R.id.tipo);
+                txt.setText(tipo);
                 ImageButton imgbtn = v.findViewById(R.id.cancella);
                 imgbtn.setOnClickListener(clickListener);
             }

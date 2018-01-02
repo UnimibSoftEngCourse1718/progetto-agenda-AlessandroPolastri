@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Agenda Personale</string>
-    <string name="add">add</string>
     <string name="attivita">Attività</string>
     <string name="inserisci_nota">Inserisci Nota</string>
     <string name="inserisci_data">Inserisci Data</string>
@@ -11,7 +10,6 @@
     <string name="aggiungi">Aggiungi</string>
     <string name="nome">Nome:</string>
     <string name="cognome">Cognome:</string>
-    <string name="indietro">Indietro</string>
     <string name="oggetto">Oggetto</string>
     <string name="data">Data</string>
     <string name="orario">Orario</string>
@@ -28,4 +26,11 @@
     <string name="rubrica">Rubrica</string>
     <string name="credit1">Created By</string>
     <string name="credit2">Alessandro Polastri</string>
+    <string name="aggiungi_tipo">Aggiungi Tipo:</string>
+    <string name="scrivi_qui_il_tipo_personalizzato">Scrivi qui il Tipo personalizzato</string>
+    <string name="tipo_personalizzato">Tipo Personalizzato</string>
+    <string name="mario">Mario</string>
+    <string name="rossi">Rossi</string>
+    <string name="_1122334455">1122334455</string>
+    <string name="mario_example_com">mario@example.com</string>
 </resources>

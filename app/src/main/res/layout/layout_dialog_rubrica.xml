@@ -8,8 +8,8 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="301dp"
-        android:layout_height="226dp"
+        android:layout_width="328dp"
+        android:layout_height="284dp"
         android:layout_marginEnd="70dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="16dp"
@@ -18,8 +18,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/nome"
@@ -34,7 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="@string/mario"
+                android:inputType="textCapWords" />
         </TableRow>
 
         <TableRow
@@ -54,7 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="@string/rossi"
+                android:inputType="textCapWords" />
         </TableRow>
 
         <TableRow
@@ -74,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/_1122334455"
                 android:inputType="phone" />
         </TableRow>
 
@@ -83,7 +86,7 @@
 
             <TextView
                 android:id="@+id/email"
-                android:layout_width="wrap_content"
+                android:layout_width="96dp"
                 android:layout_height="wrap_content"
                 android:text="@string/e_mail"
                 android:textColor="@android:color/black"
@@ -94,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/mario_example_com"
                 android:inputType="textEmailAddress" />
         </TableRow>
 
@@ -111,38 +115,53 @@
 
             <Spinner
                 android:id="@+id/stipo"
-                android:layout_width="219dp"
+                android:layout_width="189dp"
                 android:layout_height="36dp"
                 android:entries="@string/tipo" />
+
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/aggiungiTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aggiungi_tipo"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="149dp"
+                tools:layout_editor_absoluteY="466dp" />
+
+            <EditText
+                android:id="@+id/eaggiungiTipo"
+                android:layout_width="203dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/tipo_personalizzato"
+                android:inputType="textCapWords"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="57dp" />
+
+        </TableRow>
+
     </TableLayout>
 
     <Button
         android:id="@+id/salva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="156dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="12dp"
-        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:text="@string/salva"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/space"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.083" />
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" tools:targetApi="lollipop" />
 
 </android.support.constraint.ConstraintLayout>

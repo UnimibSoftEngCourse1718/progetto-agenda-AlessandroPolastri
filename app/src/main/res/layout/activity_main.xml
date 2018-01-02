@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:layout_marginTop="24dp"
-        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="attivita"
         android:text="@string/attivit"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendario" />
+        app:layout_constraintTop_toBottomOf="@+id/calendario" tools:targetApi="lollipop"
+        android:layout_marginRight="28dp" />
 
     <Button
         android:id="@+id/rubrica"
@@ -26,12 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
-        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="rubrica"
         android:text="@string/rubrica"
         android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendario" />
+        app:layout_constraintTop_toBottomOf="@+id/calendario" tools:targetApi="lollipop"
+        android:layout_marginLeft="28dp" />
 
     <CalendarView
         android:id="@+id/calendario"
