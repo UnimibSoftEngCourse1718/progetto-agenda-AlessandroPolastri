@@ -1,4 +1,4 @@
-package polastri.alessandro.agendapersonale;
+package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita;
 
 
 import android.content.Context;
@@ -9,7 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String NOMEDB = "DBATTIVITA";
 
-    public DBHelper(Context context){
+    DBHelper(Context context){
         super(context, NOMEDB, null, 1);
     }
 

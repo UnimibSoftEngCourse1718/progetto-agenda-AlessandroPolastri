@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Impegni"
+        <activity android:name=".polastri.alessandro.agendapersonale.attivita.Impegni"
             android:label="Impegni"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Rubrica"
+        <activity android:name=".polastri.alessandro.agendapersonale.rubrica.Rubrica"
             android:label="Rubrica"
             android:windowSoftInputMode="adjustPan" />
     </application>

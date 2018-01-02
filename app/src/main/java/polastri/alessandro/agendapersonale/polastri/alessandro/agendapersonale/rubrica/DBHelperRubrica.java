@@ -1,4 +1,4 @@
-package polastri.alessandro.agendapersonale;
+package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.rubrica;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

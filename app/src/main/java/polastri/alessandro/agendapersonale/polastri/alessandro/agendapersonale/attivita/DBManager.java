@@ -1,4 +1,4 @@
-package polastri.alessandro.agendapersonale;
+package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,16 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-public class DBManager {
+class DBManager {
 
     private DBHelper dbHelper;
 
-    public DBManager(Context context){
+    DBManager(Context context){
 
         dbHelper = new DBHelper(context);
     }
 
-    public void save(String oggetto, String data, String orario, String note, String allarme){
+    void save(String oggetto, String data, String orario, String note, String allarme){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -31,20 +31,18 @@ public class DBManager {
         } catch(SQLiteException sqle){}
     }
 
-    public boolean delete(long id){
+    boolean delete(long id){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try{
-            if(db.delete(Attivita.NOME_TABELLA, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)})>0)
-                return true;
-            return false;
+            return db.delete(Attivita.NOME_TABELLA, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
         } catch(SQLiteException sqle){
             return false;
         }
     }
 
-    public Cursor query(){
+    Cursor query(){
 
         Cursor crs;
 

@@ -1,4 +1,4 @@
-package polastri.alessandro.agendapersonale;
+package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.rubrica;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,14 +8,14 @@ import android.database.sqlite.SQLiteException;
 
 class DBManagerRubrica {
 
-    private DBHelperRubrica dbHelper;
+    private static DBHelperRubrica dbHelper;
 
     DBManagerRubrica(Context context){
 
         dbHelper = new DBHelperRubrica(context);
     }
 
-    void save(String nome, String cognome, String telefono, String email, String tipo){
+    void salva(String nome, String cognome, String telefono, String email, String tipo){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -33,7 +33,7 @@ class DBManagerRubrica {
         }
     }
 
-    boolean delete(long id){
+    boolean cancella(long id){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -60,5 +60,32 @@ class DBManagerRubrica {
         }
 
         return crs;
+    }
+
+    static Cursor cercaTipo(String ricerca) {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String selectQuery =  "SELECT  rowid as " +
+                Contatto.CAMPO_ID + "," +
+                Contatto.CAMPO_NOME + "," +
+                Contatto.CAMPO_COGNOME + "," +
+                Contatto.CAMPO_TELEFONO + "," +
+                Contatto.CAMPO_EMAIL + "," +
+                Contatto.CAMPO_TIPO +
+                " FROM " + Contatto.NOME_TABELLA +
+                " WHERE " +  Contatto.CAMPO_TIPO + "  LIKE  '%" + ricerca + "%' "
+                ;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+
+        return cursor;
     }
 }

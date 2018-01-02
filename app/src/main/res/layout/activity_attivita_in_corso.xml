@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="polastri.alessandro.agendapersonale.Impegni">
+    tools:context="polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Impegni">
 
     <ListView
         android:id="@+id/lista"

@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Impegni;
+import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.rubrica.Rubrica;
+
 public class Main extends AppCompatActivity {
 
     @Override

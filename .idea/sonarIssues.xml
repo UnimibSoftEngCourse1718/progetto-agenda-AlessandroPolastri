@@ -3,6 +3,16 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
@@ -18,7 +28,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/DBHelperTipoContatto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/DBManagerRubrica.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/DBManagerTipoContatto.java">
           <value>
             <set />
           </value>
@@ -29,6 +49,71 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/Rubrica.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/TipoContatto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/attivita/Attivita.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/attivita/DBHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/attivita/DBManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/rubrica/Contatto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/rubrica/CustomAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/rubrica/DBHelperRubrica.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/rubrica/DBManagerRubrica.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/rubrica/Rubrica.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_rubrica.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_dialog_nuovotipo.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/riga_layout_rubrica.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/colors.xml">
           <value>
             <set />
           </value>
