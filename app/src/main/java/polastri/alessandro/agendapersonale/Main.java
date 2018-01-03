@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Impegni;
 import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.rubrica.Rubrica;
 
 public class Main extends AppCompatActivity {
@@ -15,12 +14,6 @@ public class Main extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    public void attivita(View v){
-
-        Intent intent = new Intent(this, Impegni.class);
-        startActivity(intent);
     }
 
     public void rubrica(View v){

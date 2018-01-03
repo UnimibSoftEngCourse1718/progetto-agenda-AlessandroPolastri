@@ -11,6 +11,7 @@ class Contatto {
     static final String CAMPO_TIPO = "tipo";
 
     private Contatto() {
+
         throw new IllegalStateException("Utility class");
     }
 }

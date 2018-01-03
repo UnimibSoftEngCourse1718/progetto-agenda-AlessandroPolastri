@@ -21,13 +21,13 @@
         android:id="@+id/cognome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/nome"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="5dp" />
 
     <ImageButton
         android:id="@+id/cancella"

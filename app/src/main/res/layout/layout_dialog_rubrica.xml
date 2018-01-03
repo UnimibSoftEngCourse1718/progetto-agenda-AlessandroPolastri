@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/nome"
+                android:id="@+id/nomeContatto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nome"
@@ -30,7 +30,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/enome"
+                android:id="@+id/enomeContatto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -43,7 +43,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/cognome"
+                android:id="@+id/cognomeContatto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cognome"
@@ -51,7 +51,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/ecognome"
+                android:id="@+id/ecognomeContatto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -150,7 +150,7 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/salva"
+        android:id="@+id/salvaContatto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="156dp"
@@ -162,6 +162,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" tools:targetApi="lollipop" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        tools:targetApi="lollipop" />
 
 </android.support.constraint.ConstraintLayout>

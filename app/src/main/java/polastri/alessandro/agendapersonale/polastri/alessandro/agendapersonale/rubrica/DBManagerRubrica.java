@@ -15,10 +15,9 @@ class DBManagerRubrica {
         dbHelper = new DBHelperRubrica(context);
     }
 
-    void salva(String nome, String cognome, String telefono, String email, String tipo){
+    void salvaContatto(String nome, String cognome, String telefono, String email, String tipo){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
         ContentValues cv = new ContentValues();
         cv.put(Contatto.CAMPO_NOME, nome);
         cv.put(Contatto.CAMPO_COGNOME, cognome);
@@ -27,13 +26,15 @@ class DBManagerRubrica {
         cv.put(Contatto.CAMPO_TIPO, tipo);
 
         try{
+
             db.insert(Contatto.NOME_TABELLA, null, cv);
         } catch(SQLiteException sqle){
+
             throw(new UnsupportedOperationException());
         }
     }
 
-    boolean cancella(long id){
+    boolean cancellaContatto(long id){
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -48,18 +49,14 @@ class DBManagerRubrica {
 
     Cursor query(){
 
-        Cursor crs;
-
         try{
 
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            crs = db.query(Contatto.NOME_TABELLA, null, null, null, null, null, null, null);
+            return db.query(Contatto.NOME_TABELLA, null, null, null, null, null, null, null);
         } catch(SQLiteException sqle){
 
             return null;
         }
-
-        return crs;
     }
 
     static Cursor cercaTipo(String ricerca) {
@@ -82,6 +79,7 @@ class DBManagerRubrica {
         if (cursor == null) {
             return null;
         } else if (!cursor.moveToFirst()) {
+
             cursor.close();
             return null;
         }

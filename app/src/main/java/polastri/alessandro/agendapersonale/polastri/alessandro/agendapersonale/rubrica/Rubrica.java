@@ -26,19 +26,19 @@ import polastri.alessandro.agendapersonale.R;
 public class Rubrica extends AppCompatActivity {
 
     private final static String TAG = Rubrica.class.getName();
-    private String selezioneSpinner;
     private DBManagerRubrica db = null;
     private CursorAdapter adapter;
     private ListView listView = null;
     private Cursor cursor;
-
+    private String selezioneSpinner;
     private View.OnClickListener clickListener = new View.OnClickListener() {
 
         public void onClick(View v) {
 
             int position = listView.getPositionForView(v);
             long id = adapter.getItemId(position);
-            if (db.cancella(id))
+            if (db.cancellaContatto(id))
+
                 adapter.changeCursor(db.query());
         }
     };
@@ -49,21 +49,22 @@ public class Rubrica extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rubrica);
 
-        Button aggiungi = findViewById(R.id.aggiungi);
+        Button aggiungi = findViewById(R.id.aggiungiContatto);
         aggiungi.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Rubrica.this);
-                @SuppressLint("InflateParams") View view = getLayoutInflater().inflate(R.layout.layout_dialog_rubrica, null);
+                @SuppressLint("InflateParams")
+                View view = getLayoutInflater().inflate(R.layout.layout_dialog_rubrica, null);
 
-                final EditText nome = view.findViewById(R.id.enome);
-                final EditText cognome = view.findViewById(R.id.ecognome);
+                final EditText nome = view.findViewById(R.id.enomeContatto);
+                final EditText cognome = view.findViewById(R.id.ecognomeContatto);
                 final EditText telefono = view.findViewById(R.id.etelefono);
                 final EditText email = view.findViewById(R.id.eemail);
-                final Spinner tipo = view.findViewById(R.id.stipo);
                 final EditText tipoPersonalizzato = view.findViewById(R.id.eaggiungiTipo);
 
+                final Spinner tipo = view.findViewById(R.id.stipo);
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Rubrica.this, android.R.layout.simple_spinner_item, new String[]{"Nessuno", "Amico", "Collega", "Parente"});
                 tipo.setAdapter(spinnerAdapter);
                 tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -82,24 +83,26 @@ public class Rubrica extends AppCompatActivity {
                 final AlertDialog dialog = builder.create();
                 dialog.show();
 
-                Button salva = view.findViewById(R.id.salva);
+                Button salva = view.findViewById(R.id.salvaContatto);
                 salva.setOnClickListener(new View.OnClickListener() {
 
                     public void onClick(View v) {
+
                         if(!nome.getText().toString().isEmpty()){
 
                             if(!tipoPersonalizzato.getText().toString().isEmpty()){
-                            db.salva(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
-                            Toast.makeText(getApplicationContext(), "Contatto inserito!", Toast.LENGTH_SHORT).show();
-                            adapter.changeCursor(db.query());
-                            dialog.dismiss();
+
+                                db.salvaContatto(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
+                                Toast.makeText(Rubrica.this, "Contatto inserito!", Toast.LENGTH_SHORT).show();
+                                adapter.changeCursor(db.query());
+                                dialog.dismiss();
                             } else{
-                                db.salva(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), selezioneSpinner);
-                                Toast.makeText(getApplicationContext(), "Contatto inserito!", Toast.LENGTH_SHORT).show();
+
+                                db.salvaContatto(nome.getEditableText().toString(), cognome.getEditableText().toString(), telefono.getEditableText().toString(), email.getEditableText().toString(), selezioneSpinner);
+                                Toast.makeText(Rubrica.this, "Contatto inserito!", Toast.LENGTH_SHORT).show();
                                 adapter.changeCursor(db.query());
                                 dialog.dismiss();
                             }
-
                         } else{
                             Toast.makeText(Rubrica.this, "Il nome è obbligatorio!", Toast.LENGTH_SHORT).show();
                         }
@@ -109,7 +112,7 @@ public class Rubrica extends AppCompatActivity {
         });
 
         db = new DBManagerRubrica(this);
-        listView = findViewById(R.id.lista);
+        listView = findViewById(R.id.listaContatti);
         Cursor crs = db.query();
         adapter = new CursorAdapter(this, crs, 0){
 
@@ -149,7 +152,7 @@ public class Rubrica extends AppCompatActivity {
             }
         };
 
-        SearchView ricerca = findViewById(R.id.ricerca);
+        SearchView ricerca = findViewById(R.id.ricercaTipo);
         ricerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -159,8 +162,10 @@ public class Rubrica extends AppCompatActivity {
                 cursor = DBManagerRubrica.cercaTipo(s);
 
                 if (cursor == null) {
+
                     Toast.makeText(Rubrica.this, "Nessun contatto con il tipo cercato!", Toast.LENGTH_SHORT).show();
                 } else {
+
                     Toast.makeText(Rubrica.this, " Trovati!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -175,6 +180,7 @@ public class Rubrica extends AppCompatActivity {
                 cursor = DBManagerRubrica.cercaTipo(s);
 
                 if (cursor != null) {
+
                     adapter.swapCursor(cursor);
                 }
 
