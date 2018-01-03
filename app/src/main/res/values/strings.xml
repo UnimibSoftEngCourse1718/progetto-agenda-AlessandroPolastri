@@ -22,4 +22,8 @@
     <string name="_1122334455">1122334455</string>
     <string name="mario_example_com">mario@example.com</string>
     <string name="attivit_in_corso">Attività In Corso</string>
+    <string name="le_tue_attivit">Le Tue Attività</string>
+    <string name="suggerisci_attivit">Suggerisci Attività</string>
+    <string name="aggiungi_attivita">Aggiungi Attivita</string>
+    <string name="aggiungi_contatto_main">Aggiungi Contatto</string>
 </resources>

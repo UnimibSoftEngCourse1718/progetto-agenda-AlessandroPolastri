@@ -9,22 +9,25 @@ public class DBHelperRubrica extends SQLiteOpenHelper{
     private static final String NOMEDB = "DBCONTATTI";
 
     DBHelperRubrica(Context context){
+
         super(context, NOMEDB, null, 1);
     }
 
+    @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String b = " TEXT,";
-        String a = "CREATE TABLE " + Contatto.NOME_TABELLA +
+        String text = " TEXT,";
+        String crea = "CREATE TABLE " + Contatto.NOME_TABELLA +
                 " ( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                Contatto.CAMPO_NOME + b +
-                Contatto.CAMPO_COGNOME + b +
-                Contatto.CAMPO_TELEFONO + b +
-                Contatto.CAMPO_EMAIL + b +
+                Contatto.CAMPO_NOME + text +
+                Contatto.CAMPO_COGNOME + text +
+                Contatto.CAMPO_TELEFONO + text +
+                Contatto.CAMPO_EMAIL + text +
                 Contatto.CAMPO_TIPO + " TEXT)";
-        db.execSQL(a);
+        db.execSQL(crea);
     }
 
+    @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         throw(new UnsupportedOperationException());

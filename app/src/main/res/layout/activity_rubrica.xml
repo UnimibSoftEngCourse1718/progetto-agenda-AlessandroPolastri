@@ -23,17 +23,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="120dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/aggiungi"
+        android:text="@string/aggiungi_contatto_main"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listaContatti"
         app:layout_constraintVertical_bias="0.0"
         tools:targetApi="lollipop"
-        android:layout_marginRight="160dp" />
+        android:layout_marginRight="120dp" />
 
     <SearchView
         android:id="@+id/ricercaTipo"
