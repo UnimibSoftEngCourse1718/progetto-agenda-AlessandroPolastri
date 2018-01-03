@@ -26,4 +26,10 @@
     <string name="suggerisci_attivit">Suggerisci Attività</string>
     <string name="aggiungi_attivita">Aggiungi Attivita</string>
     <string name="aggiungi_contatto_main">Aggiungi Contatto</string>
+    <string name="oggetto">Oggetto:</string>
+    <string name="comprare_il_latte">Comprare il latte</string>
+    <string name="scadenza">Scadenza:</string>
+    <string name="gg_mm_aaaa">gg/mm/aaaa</string>
+    <string name="salva_attivita">Salva</string>
+    <string name="scade_il">Scade il:</string>
 </resources>

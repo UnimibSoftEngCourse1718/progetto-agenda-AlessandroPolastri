@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelperAttivita extends SQLiteOpenHelper{
 
-    private static final String NOMEDB = "DBATTIVITA";
+    private static final String NOMEDB = "DBATTIVITAINCORSO";
 
     DBHelperAttivita(Context context){
 
@@ -16,9 +16,9 @@ public class DBHelperAttivita extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String text = " TEXT";
-        String crea = "CREATE TABLE " + Attivita.NOME_TABELLA +
-                " (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        String text = " TEXT,";
+        String crea = "CREATE TABLE " + Attivita.NOME +
+                " ( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Attivita.CAMPO_OGGETTO + text +
                 Attivita.CAMPO_INIZIO + text +
                 Attivita.CAMPO_FINE + text +

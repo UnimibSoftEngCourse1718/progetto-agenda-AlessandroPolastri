@@ -33,9 +33,10 @@ public class Rubrica extends AppCompatActivity {
     private String selezioneSpinner;
     private View.OnClickListener clickListener = new View.OnClickListener() {
 
-        public void onClick(View v) {
+        @Override
+        public void onClick(View view) {
 
-            int position = listView.getPositionForView(v);
+            int position = listView.getPositionForView(view);
             long id = adapter.getItemId(position);
             if (db.cancellaContatto(id))
 
@@ -116,12 +117,14 @@ public class Rubrica extends AppCompatActivity {
         Cursor crs = db.query();
         adapter = new CursorAdapter(this, crs, 0){
 
+            @Override
             @SuppressLint("InflateParams")
-            public View newView(Context ctx, Cursor arg1, ViewGroup arg2) {
+            public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
 
                 return getLayoutInflater().inflate(R.layout.riga_layout_rubrica, null);
             }
 
+            @Override
             public void bindView(View v, Context arg1, Cursor crs) {
 
                 String nome = crs.getString(crs.getColumnIndex(Contatto.CAMPO_NOME));
@@ -139,8 +142,8 @@ public class Rubrica extends AppCompatActivity {
                 txt.setText(email);
                 txt = v.findViewById(R.id.tipo);
                 txt.setText(tipo);
-                ImageButton imgbtn = v.findViewById(R.id.cancella);
-                imgbtn.setOnClickListener(clickListener);
+                ImageButton cancellaContatto = v.findViewById(R.id.cancella);
+                cancellaContatto.setOnClickListener(clickListener);
             }
 
             @Override

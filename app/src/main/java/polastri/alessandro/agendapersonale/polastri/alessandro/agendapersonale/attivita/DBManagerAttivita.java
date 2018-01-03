@@ -6,18 +6,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-public class DBManagerAttivita {
+class DBManagerAttivita {
 
-    private static DBHelperAttivita dbHelper;
+    private static DBHelperAttivita dbHelperAttivita;
 
     DBManagerAttivita(Context context){
 
-        dbHelper = new DBHelperAttivita(context);
+        dbHelperAttivita = new DBHelperAttivita(context);
     }
 
     void salvaAttivita(String oggetto, String inizio, String fine, String priorita){
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelperAttivita.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(Attivita.CAMPO_OGGETTO, oggetto);
         cv.put(Attivita.CAMPO_INIZIO, inizio);
@@ -25,18 +25,21 @@ public class DBManagerAttivita {
         cv.put(Attivita.CAMPO_PRIORITA, priorita);
 
         try{
-            db.insert(Attivita.NOME_TABELLA, null, cv);
+
+            db.insert(Attivita.NOME, null, cv);
         } catch(SQLiteException sqle){
+
             throw(new UnsupportedOperationException());
         }
     }
 
     boolean cancellaAttivita(long id){
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelperAttivita.getWritableDatabase();
 
         try{
-            return db.delete(Attivita.NOME_TABELLA, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
+
+            return db.delete(Attivita.NOME, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
         } catch(SQLiteException sqle){
 
             return false;
@@ -47,8 +50,8 @@ public class DBManagerAttivita {
 
         try{
 
-            SQLiteDatabase db = dbHelper.getReadableDatabase();
-            return db.query(Attivita.NOME_TABELLA, null, null, null, null, null, null, null);
+            SQLiteDatabase db = dbHelperAttivita.getReadableDatabase();
+            return db.query(Attivita.NOME, null, null, null, null, null, null, null);
         } catch(SQLiteException sqle){
 
             return null;

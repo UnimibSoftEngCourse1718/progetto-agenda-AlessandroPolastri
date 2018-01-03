@@ -1,8 +1,8 @@
 package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita;
 
-public class Attivita {
+class Attivita {
 
-    static final String NOME_TABELLA = "attivita";
+    static final String NOME = "attivita";
     static final String CAMPO_ID = "_id";
     static final String CAMPO_OGGETTO = "oggetto";
     static final String CAMPO_INIZIO = "inizio";
