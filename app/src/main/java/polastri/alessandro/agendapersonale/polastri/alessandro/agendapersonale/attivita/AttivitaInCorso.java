@@ -114,21 +114,10 @@ public class AttivitaInCorso extends AppCompatActivity {
 
                 String oggetto = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_OGGETTO));
                 String scadenza = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_FINE));
-
-                String dataTemporanea = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_INIZIO));
-                String priorita_temporanea = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_PRIORITA));
-
                 TextView txt = view.findViewById(R.id.oggetto_attivita_inserito);
                 txt.setText(oggetto);
                 txt = view.findViewById(R.id.data_scadenza_attivita);
                 txt.setText(scadenza);
-
-                txt = view.findViewById(R.id.dataTemp);
-                txt.setText(dataTemporanea);
-                txt = view.findViewById(R.id.priorita_temp);
-                txt.setText(priorita_temporanea);
-
-
                 ImageButton cancellaAttivitaInCorso = view.findViewById(R.id.cancella_attivitaincorso);
                 cancellaAttivitaInCorso.setOnClickListener(clickListener);
             }
