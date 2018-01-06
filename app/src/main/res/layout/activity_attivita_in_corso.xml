@@ -29,7 +29,8 @@
         android:text="@string/suggerisci_attivit"
         android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_attivita_in_corso" tools:targetApi="lollipop"
+        app:layout_constraintTop_toBottomOf="@+id/lista_attivita_in_corso"
+        tools:targetApi="lollipop"
         android:layout_marginLeft="8dp" />
 
     <Button
@@ -43,5 +44,5 @@
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_attivita_in_corso"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp" tools:targetApi="lollipop" />
 </android.support.constraint.ConstraintLayout>

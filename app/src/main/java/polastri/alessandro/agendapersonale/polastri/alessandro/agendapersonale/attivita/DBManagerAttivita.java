@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
+
+import static polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Attivita.CAMPO_PRIORITA;
+import static polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Attivita.NOME;
 
 class DBManagerAttivita {
 
@@ -26,7 +30,7 @@ class DBManagerAttivita {
 
         try{
 
-            db.insert(Attivita.NOME, null, cv);
+            db.insert(NOME, null, cv);
         } catch(SQLiteException sqle){
 
             throw(new UnsupportedOperationException());
@@ -39,7 +43,7 @@ class DBManagerAttivita {
 
         try{
 
-            return db.delete(Attivita.NOME, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
+            return db.delete(NOME, Attivita.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
         } catch(SQLiteException sqle){
 
             return false;
@@ -51,10 +55,26 @@ class DBManagerAttivita {
         try{
 
             SQLiteDatabase db = dbHelperAttivita.getReadableDatabase();
-            return db.query(Attivita.NOME, null, null, null, null, null, null, null);
+            return db.query(NOME, null, null, null, null, null, null, null);
         } catch(SQLiteException sqle){
 
             return null;
         }
+    }
+
+    static Cursor getMin() {
+
+        SQLiteDatabase db = dbHelperAttivita.getReadableDatabase();
+
+        String selectQuery = "SELECT MIN(" +
+                Attivita.CAMPO_PRIORITA + ")" +
+                " AS MINIMO" +
+                " FROM " + Attivita.NOME;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        cursor.moveToFirst();
+
+        return cursor;
     }
 }
