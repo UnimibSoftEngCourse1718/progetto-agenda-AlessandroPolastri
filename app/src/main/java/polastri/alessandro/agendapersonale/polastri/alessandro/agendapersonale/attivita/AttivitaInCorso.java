@@ -139,17 +139,9 @@ public class AttivitaInCorso extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                Cursor cursor = DBManagerAttivita.getMin();
-
-                if (cursor == null) {
-
-                    Toast.makeText(AttivitaInCorso.this, "Errore!", Toast.LENGTH_LONG).show();
-                } else {
-
-                    int minimo = cursor.getColumnIndex("MINIMO");
-                    String a = cursor.getString(minimo);
-                    Toast.makeText(AttivitaInCorso.this, "Prossima attività in scadenza:\n" + a, Toast.LENGTH_LONG).show();
-                }
+                String suggeriscimeloGetMin = DBManagerAttivita.getMin();
+                String suggeriscimelo = DBManagerAttivita.ottieniMinimo(suggeriscimeloGetMin);
+                Toast.makeText(AttivitaInCorso.this, "Prossima attività in scadenza:\n" + suggeriscimelo, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -165,116 +157,68 @@ public class AttivitaInCorso extends AppCompatActivity {
         return formato.format(corrente);
     }
 
-    public String getPrioritaAutomatica(String dataIniziale, String dataFinale){
+    public String getPrioritaAutomatica(String dataIniziale, String dataFinale) {
 
-        if(dataFinale.length() != 10 || dataFinale.charAt(2) != '/' || dataFinale.charAt(5) != '/'){
+        if (dataFinale.length() != 10 || dataFinale.charAt(2) != '/' || dataFinale.charAt(5) != '/') {
 
             return null;
+        } else {
+
+            int annoPriorita;
+            int mesePriorita;
+            int giornoPriorita;
+
+            if (Integer.parseInt(dataFinale.substring(6, 10)) < Integer.parseInt(dataIniziale.substring(6, 10))) {
+
+                return null;
+            } else if ((Integer.parseInt(dataIniziale.substring(6, 10)) == Integer.parseInt(dataFinale.substring(6, 10)) && (Integer.parseInt(dataIniziale.substring(3, 5)) == Integer.parseInt(dataFinale.substring(3, 5))) && Integer.parseInt(dataIniziale.substring(0, 2)) > Integer.parseInt(dataFinale.substring(0, 2)))) {
+
+                return null;
+            } else if ((Integer.parseInt(dataIniziale.substring(6, 10)) == Integer.parseInt(dataFinale.substring(6, 10)) && (Integer.parseInt(dataIniziale.substring(3, 5)) > Integer.parseInt(dataFinale.substring(3, 5))))) {
+
+                return null;
+            } else if ((Integer.parseInt(dataIniziale.substring(3, 5)) > 12 || (Integer.parseInt(dataFinale.substring(3, 5)) > 12))) {
+
+                return null;
+            } else if (Integer.parseInt(dataIniziale.substring(0, 2)) > 31 || Integer.parseInt(dataFinale.substring(0, 2)) > 31) {
+
+                return null;
+            } else if (Integer.parseInt(dataFinale.substring(3, 5)) == 2 && Integer.parseInt(dataFinale.substring(0, 2)) > 29) {
+
+                return null;
+            } else if ((Integer.parseInt(dataFinale.substring(3, 5)) == 4 || Integer.parseInt(dataFinale.substring(3, 5)) == 6 || Integer.parseInt(dataFinale.substring(3, 5)) == 11 || Integer.parseInt(dataFinale.substring(3, 5)) == 9) && Integer.parseInt(dataFinale.substring(0, 2)) == 31) {
+
+                return null;
+            }
+
+
+            if (Integer.parseInt(dataFinale.substring(6, 10)) - Integer.parseInt(dataIniziale.substring(6, 10)) == 0) {
+
+                annoPriorita = 0;
+            } else {
+
+                annoPriorita = (Integer.parseInt(dataFinale.substring(6, 10)) - Integer.parseInt(dataIniziale.substring(6, 10))) * 1200;
+            }
+
+
+            if (dataFinale.charAt(3) == 0) {
+
+                mesePriorita = Character.getNumericValue(dataFinale.charAt(4)) * 100;
+            } else {
+
+                mesePriorita = Integer.parseInt(dataFinale.substring(3, 5)) * 100;
+            }
+
+
+            if (dataFinale.charAt(0) == 0) {
+
+                giornoPriorita = Character.getNumericValue(dataFinale.charAt(1));
+            } else {
+
+                giornoPriorita = Integer.parseInt(dataFinale.substring(0, 2));
+            }
+
+            return Integer.toString((giornoPriorita + mesePriorita + annoPriorita));
         }
-
-        int anno1 = Integer.parseInt(dataIniziale.substring(6, 10));
-        int anno2 = Integer.parseInt(dataFinale.substring(6, 10));
-        int annoPriorita = 0;
-
-        if(anno2 < anno1){
-
-            return null;
-        } else if ((anno1 == anno2 && (Integer.parseInt(dataIniziale.substring(3, 5)) == Integer.parseInt(dataFinale.substring(3, 5))) && Integer.parseInt(dataIniziale.substring(0, 2)) > Integer.parseInt(dataFinale.substring(0, 2)))){
-
-            return null;
-        } else if((anno1 == anno2 && (Integer.parseInt(dataIniziale.substring(3, 5)) > Integer.parseInt(dataFinale.substring(3, 5))))){
-
-            return null;
-        } else if((Integer.parseInt(dataIniziale.substring(3, 5)) > 12 || (Integer.parseInt(dataFinale.substring(3, 5)) > 12))){
-
-            return null;
-        } else if(Integer.parseInt(dataIniziale.substring(0, 2)) > 31 || Integer.parseInt(dataFinale.substring(0, 2)) > 31){
-
-            return null;
-        } else if(Integer.parseInt(dataFinale.substring(3, 5)) == 2 && Integer.parseInt(dataFinale.substring(0, 2)) > 29){
-
-            return null;
-        } else if((Integer.parseInt(dataFinale.substring(3, 5)) == 4 || Integer.parseInt(dataFinale.substring(3, 5)) == 6 || Integer.parseInt(dataFinale.substring(3, 5)) == 11 || Integer.parseInt(dataFinale.substring(3, 5)) == 9) && Integer.parseInt(dataFinale.substring(0, 2)) == 31){
-
-            return null;
-        }
-
-        if(anno2 - anno1 == 0){
-
-            annoPriorita = 0;
-        } else if (anno2 > anno1){
-
-            annoPriorita = (anno2 - anno1) * 9999;
-        }
-
-        int mese1, mese2, mesePriorita = 0;
-
-        if(dataIniziale.charAt(3) == '0' && dataFinale.charAt(3) == '0' && Character.getNumericValue(dataIniziale.charAt(4)) <= Character.getNumericValue(dataFinale.charAt(4))){
-
-            mese1 = Character.getNumericValue(dataIniziale.charAt(4));
-            mese2 = Character.getNumericValue(dataFinale.charAt(4));
-            mesePriorita = (mese2 - mese1) * 900;
-        } else if(dataIniziale.charAt(3) == '0' && dataFinale.charAt(3) == '0' && Character.getNumericValue(dataIniziale.charAt(4)) > Character.getNumericValue(dataFinale.charAt(4))){
-
-            mese1 = Character.getNumericValue(dataIniziale.charAt(4));
-            mese2 = Character.getNumericValue(dataFinale.charAt(4));
-            mesePriorita = ((12 - mese1) + mese2) * 900;
-        } else if(dataIniziale.charAt(3) != '0' && dataFinale.charAt(3) != '0' && Integer.parseInt(dataIniziale.substring(3, 5)) <= Integer.parseInt(dataFinale.substring(3, 5))){
-
-            mese1 = Integer.parseInt(dataIniziale.substring(3, 5));
-            mese2 = Integer.parseInt(dataFinale.substring(3, 5));
-            mesePriorita = (mese2 - mese1) * 900;
-        } else if(dataIniziale.charAt(3) != '0' && dataFinale.charAt(3) != '0' && Integer.parseInt(dataIniziale.substring(3, 5)) > Integer.parseInt(dataFinale.substring(3, 5))){
-
-            mese1 = Integer.parseInt(dataIniziale.substring(3, 5));
-            mese2 = Integer.parseInt(dataFinale.substring(3, 5));
-            mesePriorita = ((12 - mese1) + mese2) * 900;
-        } else if(dataIniziale.charAt(3) != '0' && dataFinale.charAt(3) == '0'){
-
-            mese1 = Integer.parseInt(dataIniziale.substring(3, 5));
-            mese2 = Character.getNumericValue(dataFinale.charAt(4));
-            mesePriorita = ((12 - mese1) + mese2) * 900;
-        } else if(dataIniziale.charAt(3) == '0' && dataFinale.charAt(3) != '0'){
-
-            mese1 = Character.getNumericValue(dataIniziale.charAt(4));
-            mese2 = Integer.parseInt(dataFinale.substring(3, 5));
-            mesePriorita = (mese2 - mese1) * 900;
-        }
-
-        int giorno1, giorno2, giornoPriorita = 0;
-
-        if(dataIniziale.charAt(0) == '0' && dataFinale.charAt(0) == '0' && dataIniziale.charAt(1) <= dataFinale.charAt(1)) {
-
-            giorno1 = Character.getNumericValue(dataIniziale.charAt(1));
-            giorno2 = Character.getNumericValue(dataFinale.charAt(1));
-            giornoPriorita = giorno2 - giorno1;
-        } else if(dataIniziale.charAt(0) == '0' && dataFinale.charAt(0) == '0' && dataIniziale.charAt(1) > dataFinale.charAt(1)){
-
-            giorno1 = Character.getNumericValue(dataIniziale.charAt(1));
-            giorno2 = Character.getNumericValue(dataFinale.charAt(1));
-            giornoPriorita = (30 - giorno1) + giorno2;
-        } else if(dataIniziale.charAt(0) != '0' && dataFinale.charAt(0) != '0' && Integer.parseInt(dataIniziale.substring(0, 2)) <= Integer.parseInt(dataFinale.substring(0, 2))){
-
-            giorno1 = Integer.parseInt(dataIniziale.substring(0, 2));
-            giorno2 = Integer.parseInt(dataFinale.substring(0, 2));
-            giornoPriorita = giorno2 - giorno1;
-        } else if(dataIniziale.charAt(0) != '0' && dataFinale.charAt(0) != '0' && Integer.parseInt(dataIniziale.substring(0, 2)) > Integer.parseInt(dataFinale.substring(0, 2))){
-
-            giorno1 = Integer.parseInt(dataIniziale.substring(0, 2));
-            giorno2 = Integer.parseInt(dataFinale.substring(0, 2));
-            giornoPriorita = (30 - giorno1) + giorno2;
-        } else if(dataIniziale.charAt(0) == '0' && dataFinale.charAt(0) != '0'){
-
-            giorno1 = Character.getNumericValue(dataIniziale.charAt(1));
-            giorno2 = Integer.parseInt(dataFinale.substring(0, 2));
-            giornoPriorita = giorno2 - giorno1;
-        } else if (dataIniziale.charAt(0) != '0' && dataFinale.charAt(0) == '0'){
-
-            giorno1 = Integer.parseInt(dataIniziale.substring(0, 2));
-            giorno2 = Character.getNumericValue(dataFinale.charAt(1));
-            giornoPriorita = (30 - giorno1) + giorno2;
-        }
-
-        return Integer.toString((giornoPriorita + mesePriorita + annoPriorita));
     }
 }

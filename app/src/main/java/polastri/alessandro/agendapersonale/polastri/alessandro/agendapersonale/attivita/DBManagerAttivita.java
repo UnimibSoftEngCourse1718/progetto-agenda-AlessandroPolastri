@@ -62,7 +62,7 @@ class DBManagerAttivita {
         }
     }
 
-    static Cursor getMin() {
+    static String getMin() {
 
         SQLiteDatabase db = dbHelperAttivita.getReadableDatabase();
 
@@ -73,8 +73,42 @@ class DBManagerAttivita {
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        cursor.moveToFirst();
+        if (cursor == null) {
 
-        return cursor;
+            return null;
+        } else if (!cursor.moveToFirst()) {
+
+            cursor.close();
+            return null;
+        } else {
+
+            int minimo = cursor.getColumnIndex("MINIMO");
+            return cursor.getString(minimo);
+        }
+    }
+
+    static String ottieniMinimo(String minimo) {
+
+        SQLiteDatabase db = dbHelperAttivita.getReadableDatabase();
+
+        String selectQuery =  "SELECT " +
+                Attivita.CAMPO_OGGETTO +
+                " FROM " + Attivita.NOME +
+                " WHERE " +  Attivita.CAMPO_PRIORITA + "  LIKE  '%" + minimo + "%' "
+                ;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+
+            cursor.close();
+            return null;
+        } else {
+
+            int trovato = cursor.getPosition();
+            return cursor.getString(trovato);
+        }
     }
 }
