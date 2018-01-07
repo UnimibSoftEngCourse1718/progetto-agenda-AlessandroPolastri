@@ -3,7 +3,6 @@ package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
-import android.os.health.SystemHealthManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import polastri.alessandro.agendapersonale.R;
 
@@ -85,7 +83,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                                 dialog.dismiss();
                             } else {
 
-                                Toast.makeText(AttivitaInCorso.this, "La data è sbagliata!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AttivitaInCorso.this, "La data è sbagliata!\n Correggila!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
 
@@ -114,13 +112,10 @@ public class AttivitaInCorso extends AppCompatActivity {
 
                 String oggetto = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_OGGETTO));
                 String scadenza = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_FINE));
-                String provvisorio = cursor.getString(cursor.getColumnIndex(Attivita.CAMPO_PRIORITA));
                 TextView txt = view.findViewById(R.id.oggetto_attivita_inserito);
                 txt.setText(oggetto);
                 txt = view.findViewById(R.id.data_scadenza_attivita);
                 txt.setText(scadenza);
-                txt = view.findViewById(R.id.txtprovvisorio);
-                txt.setText(provvisorio);
                 ImageButton cancellaAttivitaInCorso = view.findViewById(R.id.cancella_attivitaincorso);
                 cancellaAttivitaInCorso.setOnClickListener(clickListener);
             }

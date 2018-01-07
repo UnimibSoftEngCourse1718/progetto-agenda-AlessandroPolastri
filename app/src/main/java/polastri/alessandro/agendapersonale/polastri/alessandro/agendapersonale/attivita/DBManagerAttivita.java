@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.widget.Toast;
 
-import static polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Attivita.CAMPO_PRIORITA;
 import static polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.Attivita.NOME;
 
 class DBManagerAttivita {
