@@ -72,7 +72,7 @@ public class AttivitaInCorso extends AppCompatActivity {
 
                         if(!oggetto.getText().toString().isEmpty() && !fine.getText().toString().isEmpty()){
 
-                            final String dataInizioAutomatica = getDataAutomatica(System.currentTimeMillis());
+                            final String dataInizioAutomatica = getDataAutomatica();
                             final String prioritaAutomatica = getPrioritaAutomatica(dataInizioAutomatica, fine.getEditableText().toString());
 
                             if(prioritaAutomatica != null) {
@@ -143,7 +143,7 @@ public class AttivitaInCorso extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public String getDataAutomatica(long timeMillisecond) {
+    public String getDataAutomatica() {
 
         Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat")
@@ -159,40 +159,58 @@ public class AttivitaInCorso extends AppCompatActivity {
             return null;
         } else {
 
+            int annoIniziale = Integer.parseInt(dataIniziale.substring(6, 10));
+            int annoFinale = Integer.parseInt(dataFinale.substring(6, 10));
             int annoPriorita;
+            int meseIniziale = Integer.parseInt(dataIniziale.substring(3, 5));
+            int meseFinale = Integer.parseInt(dataFinale.substring(3, 5));
             int mesePriorita;
+            int giornoIniziale = Integer.parseInt(dataIniziale.substring(0, 2));
+            int giornoFinale = Integer.parseInt(dataFinale.substring(0, 2));
             int giornoPriorita;
 
-            if (Integer.parseInt(dataFinale.substring(6, 10)) < Integer.parseInt(dataIniziale.substring(6, 10))) {
+            if (annoFinale < annoIniziale) {
 
                 return null;
-            } else if ((Integer.parseInt(dataIniziale.substring(6, 10)) == Integer.parseInt(dataFinale.substring(6, 10)) && (Integer.parseInt(dataIniziale.substring(3, 5)) == Integer.parseInt(dataFinale.substring(3, 5))) && Integer.parseInt(dataIniziale.substring(0, 2)) > Integer.parseInt(dataFinale.substring(0, 2)))) {
+            }
+
+            if ((annoIniziale == annoFinale) && (meseIniziale == meseFinale) && (giornoIniziale > giornoFinale)) {
 
                 return null;
-            } else if ((Integer.parseInt(dataIniziale.substring(6, 10)) == Integer.parseInt(dataFinale.substring(6, 10)) && (Integer.parseInt(dataIniziale.substring(3, 5)) > Integer.parseInt(dataFinale.substring(3, 5))))) {
+            }
+
+            if ((annoIniziale == annoFinale) && (meseIniziale > meseFinale)) {
 
                 return null;
-            } else if ((Integer.parseInt(dataIniziale.substring(3, 5)) > 12 || (Integer.parseInt(dataFinale.substring(3, 5)) > 12))) {
+            }
+
+            if (meseFinale > 12) {
 
                 return null;
-            } else if (Integer.parseInt(dataIniziale.substring(0, 2)) > 31 || Integer.parseInt(dataFinale.substring(0, 2)) > 31) {
+            }
+
+            if (giornoFinale > 31) {
 
                 return null;
-            } else if (Integer.parseInt(dataFinale.substring(3, 5)) == 2 && Integer.parseInt(dataFinale.substring(0, 2)) > 29) {
+            }
+
+            if (meseFinale == 2 && giornoFinale > 29) {
 
                 return null;
-            } else if ((Integer.parseInt(dataFinale.substring(3, 5)) == 4 || Integer.parseInt(dataFinale.substring(3, 5)) == 6 || Integer.parseInt(dataFinale.substring(3, 5)) == 11 || Integer.parseInt(dataFinale.substring(3, 5)) == 9) && Integer.parseInt(dataFinale.substring(0, 2)) == 31) {
+            }
+
+            if ((meseFinale == 4 || meseFinale == 6 || meseFinale == 11 || meseFinale == 9) && (giornoFinale == 31)) {
 
                 return null;
             }
 
 
-            if (Integer.parseInt(dataFinale.substring(6, 10)) - Integer.parseInt(dataIniziale.substring(6, 10)) == 0) {
+            if ((annoFinale - annoIniziale) == 0) {
 
                 annoPriorita = 0;
             } else {
 
-                annoPriorita = (Integer.parseInt(dataFinale.substring(6, 10)) - Integer.parseInt(dataIniziale.substring(6, 10))) * 1200;
+                annoPriorita = (annoFinale - annoIniziale) * 1200;
             }
 
 
@@ -201,7 +219,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                 mesePriorita = Character.getNumericValue(dataFinale.charAt(4)) * 100;
             } else {
 
-                mesePriorita = Integer.parseInt(dataFinale.substring(3, 5)) * 100;
+                mesePriorita = meseFinale * 100;
             }
 
 
@@ -210,7 +228,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                 giornoPriorita = Character.getNumericValue(dataFinale.charAt(1));
             } else {
 
-                giornoPriorita = Integer.parseInt(dataFinale.substring(0, 2));
+                giornoPriorita = giornoFinale;
             }
 
             return Integer.toString((giornoPriorita + mesePriorita + annoPriorita));

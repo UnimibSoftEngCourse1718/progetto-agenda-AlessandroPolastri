@@ -149,9 +149,9 @@ public class Rubrica extends AppCompatActivity {
             @Override
             public long getItemId(int position){
 
-                Cursor cursor = adapter.getCursor();
-                cursor.moveToPosition(position);
-                return cursor.getLong(cursor.getColumnIndex(Contatto.CAMPO_ID));
+                Cursor cursore = adapter.getCursor();
+                cursore.moveToPosition(position);
+                return cursore.getLong(cursore.getColumnIndex(Contatto.CAMPO_ID));
             }
         };
 
