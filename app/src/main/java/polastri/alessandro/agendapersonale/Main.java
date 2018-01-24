@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.attivita.AttivitaInCorso;
+import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.impegni.ImpegniInCorso;
 import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.rubrica.Rubrica;
 
 public class Main extends AppCompatActivity {
@@ -28,6 +29,13 @@ public class Main extends AppCompatActivity {
 
         Intent intent;
         intent = new Intent(this, AttivitaInCorso.class);
+        startActivity(intent);
+    }
+
+    public void apriImpegni(View v){
+
+        Intent intent;
+        intent = new Intent(this, ImpegniInCorso.class);
         startActivity(intent);
     }
 }

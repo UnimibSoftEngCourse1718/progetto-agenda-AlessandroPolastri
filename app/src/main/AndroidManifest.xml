@@ -12,7 +12,6 @@
         <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,7 +21,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".polastri.alessandro.agendapersonale.attivita.AttivitaInCorso"
-            android:label="Attività in Corso"
+            android:label="Attività"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".polastri.alessandro.agendapersonale.impegni.ImpegniInCorso"
+            android:label="Impegni"
             android:windowSoftInputMode="adjustPan" />
     </application>
 

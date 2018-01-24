@@ -108,6 +108,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/impegni/ImpegniInCorso.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/rubrica/Contatto.java">
           <value>
             <set />
@@ -154,6 +159,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_attivita_libere.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_impegni_in_corso.xml">
           <value>
             <set />
           </value>
