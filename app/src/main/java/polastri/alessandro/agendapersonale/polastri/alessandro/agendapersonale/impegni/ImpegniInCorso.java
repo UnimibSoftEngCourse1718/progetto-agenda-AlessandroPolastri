@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import polastri.alessandro.agendapersonale.R;
-import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.rubrica.Rubrica;
 
 public class ImpegniInCorso extends AppCompatActivity {
 
