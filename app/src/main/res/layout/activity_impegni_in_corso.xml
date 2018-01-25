@@ -9,10 +9,10 @@
     <ListView
         android:id="@+id/lista_impegni"
         android:layout_width="395dp"
-        android:layout_height="481dp"
+        android:layout_height="485dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ricerca_tipo_impegno" />
@@ -20,14 +20,16 @@
     <SearchView
         android:id="@+id/ricerca_tipo_impegno"
         android:layout_width="395dp"
-        android:layout_height="47dp"
+        android:layout_height="33dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@android:color/transparent"
+        android:queryHint='Ricerca per tipo: Es. "Lavorativo"'
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" tools:targetApi="lollipop" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/aggiungi_impegno"

@@ -151,7 +151,7 @@ public class ImpegniInCorso extends AppCompatActivity {
                 String data = crs.getString(crs.getColumnIndex(Impegno.CAMPO_DATA));
                 String oraIniziale = crs.getString(crs.getColumnIndex(Impegno.CAMPO_ORA_INIZIO));
                 String oraFinale = crs.getString(crs.getColumnIndex(Impegno.CAMPO_ORA_FINALE));
-                String note = crs.getString(crs.getColumnIndex(Impegno.CAMPO_NOTE));
+                String ripetizione = crs.getString(crs.getColumnIndex(Impegno.CAMPO_RIPETIZIONE));
                 String tipo = crs.getString(crs.getColumnIndex(Impegno.CAMPO_TIPO));
                 TextView txt = v.findViewById(R.id.woggetto);
                 txt.setText(oggetto);
@@ -161,8 +161,8 @@ public class ImpegniInCorso extends AppCompatActivity {
                 txt.setText(oraIniziale);
                 txt = v.findViewById(R.id.worafine);
                 txt.setText(oraFinale);
-                txt = v.findViewById(R.id.wnote);
-                txt.setText(note);
+                txt = v.findViewById(R.id.wripetizione);
+                txt.setText(ripetizione);
                 txt = v.findViewById(R.id.wtipo);
                 txt.setText(tipo);
                 ImageButton cancellaImpegno = v.findViewById(R.id.cancella_impegno);

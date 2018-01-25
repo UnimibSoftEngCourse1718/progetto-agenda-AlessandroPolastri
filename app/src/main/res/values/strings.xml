@@ -44,4 +44,6 @@
     <string name="tipo_personalizzato">Tipo Personalizzato</string>
     <string name="aggiungi_tipo">Aggiungi Tipo:</string>
     <string name="cancella_impegno">TODO</string>
+    <string name="dalle">Dalle:</string>
+    <string name="alle">Alle:</string>
 </resources>

@@ -15,30 +15,35 @@
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="10dp" />
 
     <ImageButton
         android:id="@+id/cancella_impegno"
         android:layout_width="60dp"
         android:layout_height="53dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/transparent"
+        android:contentDescription="@string/cancella_impegno"
         android:tint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" android:contentDescription="@string/cancella_impegno" tools:targetApi="lollipop" />
+        app:srcCompat="@android:drawable/ic_delete"
+        tools:targetApi="lollipop"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/wdata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/cancella_impegno"
-        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintHorizontal_bias="0.624"
         app:layout_constraintStart_toEndOf="@+id/woggetto"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,12 +51,12 @@
         android:id="@+id/worainizio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toStartOf="@+id/cancella_impegno"
-        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toEndOf="@+id/woggetto"
         app:layout_constraintTop_toBottomOf="@+id/wdata" />
 
@@ -59,24 +64,14 @@
         android:id="@+id/worafine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@+id/cancella_impegno"
-        app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toEndOf="@+id/woggetto"
-        app:layout_constraintTop_toBottomOf="@+id/worainizio" />
-
-    <TextView
-        android:id="@+id/wnote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/woggetto" />
+        app:layout_constraintEnd_toStartOf="@+id/cancella_impegno"
+        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintStart_toEndOf="@+id/woggetto"
+        app:layout_constraintTop_toBottomOf="@+id/worainizio" />
 
     <TextView
         android:id="@+id/wtipo"
@@ -86,5 +81,41 @@
         android:layout_marginTop="5dp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wnote" />
+        app:layout_constraintTop_toBottomOf="@+id/wripetizione"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/wdalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/dalle"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/worainizio"
+        app:layout_constraintTop_toBottomOf="@+id/wdata"
+        android:layout_marginRight="5dp" />
+
+    <TextView
+        android:id="@+id/walle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/alle"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/worafine"
+        app:layout_constraintTop_toBottomOf="@+id/wdalle"
+        android:layout_marginRight="5dp" />
+
+    <TextView
+        android:id="@+id/wripetizione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/woggetto"
+        android:layout_marginLeft="10dp" />
 </android.support.constraint.ConstraintLayout>

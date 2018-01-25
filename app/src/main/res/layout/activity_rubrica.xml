@@ -12,7 +12,7 @@
         android:layout_height="475dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +37,11 @@
 
     <SearchView
         android:id="@+id/ricercaTipo"
-        android:layout_width="384dp"
-        android:layout_height="40dp"
+        android:layout_width="395dp"
+        android:layout_height="33dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:inputType="none|text"
         android:queryHint='Ricerca per tipo: Es: "amico"'
