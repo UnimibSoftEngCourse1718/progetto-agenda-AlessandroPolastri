@@ -87,6 +87,7 @@ public class Rubrica extends AppCompatActivity {
                 Button salva = view.findViewById(R.id.salvaContatto);
                 salva.setOnClickListener(new View.OnClickListener() {
 
+                    @Override
                     public void onClick(View v) {
 
                         if(!nome.getText().toString().isEmpty()){
@@ -105,6 +106,7 @@ public class Rubrica extends AppCompatActivity {
                                 dialog.dismiss();
                             }
                         } else{
+
                             Toast.makeText(Rubrica.this, "Il nome è obbligatorio!", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -112,10 +114,10 @@ public class Rubrica extends AppCompatActivity {
             }
         });
 
-        db = new DBManagerRubrica(this);
+        db = new DBManagerRubrica(Rubrica.this);
         listView = findViewById(R.id.listaContatti);
         Cursor crs = db.query();
-        adapter = new CursorAdapter(this, crs, 0){
+        adapter = new CursorAdapter(Rubrica.this, crs, 0){
 
             @Override
             @SuppressLint("InflateParams")

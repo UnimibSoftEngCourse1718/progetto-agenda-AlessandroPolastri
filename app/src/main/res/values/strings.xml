@@ -9,14 +9,10 @@
     <string name="aggiungi_contatto" />
     <string name="nome_contatto">Nome</string>
     <string name="telefono">Telefono:</string>
-    <string name="tipo">Tipo:</string>
     <string name="e_mail">E-Mail:</string>
     <string name="rubrica">Rubrica</string>
     <string name="credit1">Created By</string>
     <string name="credit2">Alessandro Polastri</string>
-    <string name="aggiungi_tipo">Aggiungi Tipo:</string>
-    <string name="scrivi_qui_il_tipo_personalizzato">Scrivi qui il Tipo personalizzato</string>
-    <string name="tipo_personalizzato">Tipo Personalizzato</string>
     <string name="mario">Mario</string>
     <string name="rossi">Rossi</string>
     <string name="_1122334455">1122334455</string>
@@ -33,4 +29,19 @@
     <string name="salva_attivita">Salva</string>
     <string name="scade_il">Scade il:</string>
     <string name="impegni">Impegni</string>
+    <string name="aggiungi_impegno">Aggiungi Impegno</string>
+    <string name="impegno">Impegno:</string>
+    <string name="cena_con_mario">Cena con Mario</string>
+    <string name="data">Data:</string>
+    <string name="ora_inizio">Ora inizio:</string>
+    <string name="hh_mm">hh:mm</string>
+    <string name="ora_fine">Ora fine:</string>
+    <string name="ripetizione">Ripetizione:</string>
+    <string name="allarme">Allarme:</string>
+    <string name="note">Note:</string>
+    <string name="aggiungi_qui_una_nota">Aggiungi qui una nota</string>
+    <string name="tipo">Tipo:</string>
+    <string name="tipo_personalizzato">Tipo Personalizzato</string>
+    <string name="aggiungi_tipo">Aggiungi Tipo:</string>
+    <string name="cancella_impegno">TODO</string>
 </resources>

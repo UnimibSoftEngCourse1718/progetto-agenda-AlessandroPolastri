@@ -108,7 +108,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/impegni/DBHelperImpegno.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/impegni/DBManagerImpegno.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/impegni/ImpegniInCorso.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/polastri/alessandro/agendapersonale/polastri/alessandro/agendapersonale/impegni/Impegno.java">
           <value>
             <set />
           </value>
@@ -188,6 +203,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_dialog_impegniincorso.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_dialog_nuovotipo.xml">
           <value>
             <set />
@@ -204,6 +224,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/riga_layout_attivita.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/riga_layout_impegno.xml">
           <value>
             <set />
           </value>
