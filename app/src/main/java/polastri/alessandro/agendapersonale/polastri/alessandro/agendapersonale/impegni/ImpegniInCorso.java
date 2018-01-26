@@ -21,7 +21,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import polastri.alessandro.agendapersonale.R;
+import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.ControllaData;
 
 public class ImpegniInCorso extends AppCompatActivity {
 
@@ -111,17 +116,20 @@ public class ImpegniInCorso extends AppCompatActivity {
 
                         if(!oggetto.getText().toString().isEmpty() && !data.getText().toString().isEmpty() && !oraInizio.getText().toString().isEmpty() && !oraFinale.getText().toString().isEmpty()){
 
-                            if(!tipoPersonalizzato.getText().toString().isEmpty()){
+                            if(!tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString())){
                                 db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, allarme.getEditableText().toString(), note.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
                                 Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
                                 adapter.changeCursor(db.query());
                                 dialog.dismiss();
-                            } else{
+                            } else if(ControllaData.controlla(data.getEditableText().toString())){
 
                                 db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, allarme.getEditableText().toString(), note.getEditableText().toString(), selezioneSpinnerTipo);
                                 Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
                                 adapter.changeCursor(db.query());
                                 dialog.dismiss();
+                            } else{
+
+                                Toast.makeText(ImpegniInCorso.this, "La data è sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
                             }
                         } else{
 

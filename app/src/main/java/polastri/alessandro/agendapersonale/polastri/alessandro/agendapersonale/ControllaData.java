@@ -1,0 +1,74 @@
+package polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale;
+
+import android.annotation.SuppressLint;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class ControllaData {
+
+    public static boolean controlla(String data){
+
+        String dataCorrente = getDataAutomatica();
+
+        if(data.length() != 10 || data.charAt(2) != '/' || data.charAt(5) != '/'){
+
+            return false;
+        } else{
+
+            int anno = Integer.parseInt(data.substring(6, 10));
+            int annoCorrente = Integer.parseInt(dataCorrente.substring(6, 10));
+            int mese = Integer.parseInt(data.substring(3, 5));
+            int meseCorrente = Integer.parseInt(dataCorrente.substring(3, 5));
+            int giorno = Integer.parseInt(data.substring(0, 2));
+            int giornoCorrente = Integer.parseInt(dataCorrente.substring(0, 2));
+
+            if (anno < annoCorrente) {
+
+                return false;
+            }
+
+            if ((annoCorrente == anno) && (meseCorrente == mese) && (giornoCorrente > giorno)) {
+
+                return false;
+            }
+
+            if ((annoCorrente == anno) && (meseCorrente > mese)) {
+
+                return false;
+            }
+
+            if (mese > 12) {
+
+                return false;
+            }
+
+            if (giorno > 31) {
+
+                return false;
+            }
+
+            if (mese == 2 && giorno > 29) {
+
+                return false;
+            }
+
+            if ((mese == 4 || mese == 6 || mese == 11 || mese == 9) && (giorno == 31)) {
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static String getDataAutomatica() {
+
+        Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date corrente = calendar.getTime();
+        return formato.format(corrente);
+    }
+}

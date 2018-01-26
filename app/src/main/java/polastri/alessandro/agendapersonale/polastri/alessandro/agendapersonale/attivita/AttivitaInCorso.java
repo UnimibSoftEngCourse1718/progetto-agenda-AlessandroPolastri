@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import polastri.alessandro.agendapersonale.R;
+import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.ControllaData;
 
 public class AttivitaInCorso extends AppCompatActivity {
 
@@ -72,10 +73,10 @@ public class AttivitaInCorso extends AppCompatActivity {
 
                         if(!oggetto.getText().toString().isEmpty() && !fine.getText().toString().isEmpty()){
 
-                            final String dataInizioAutomatica = getDataAutomatica();
+                            final String dataInizioAutomatica = ControllaData.getDataAutomatica();
                             final String prioritaAutomatica = getPrioritaAutomatica(dataInizioAutomatica, fine.getEditableText().toString());
 
-                            if(prioritaAutomatica != null) {
+                            if(ControllaData.controlla(fine.getEditableText().toString())) {
 
                                 db.salvaAttivita(oggetto.getEditableText().toString(), dataInizioAutomatica, fine.getEditableText().toString(), prioritaAutomatica);
                                 Toast.makeText(AttivitaInCorso.this, "Attività inserita!", Toast.LENGTH_SHORT).show();
@@ -83,7 +84,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                                 dialog.dismiss();
                             } else {
 
-                                Toast.makeText(AttivitaInCorso.this, "La data è sbagliata!\n Correggila!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AttivitaInCorso.this, "La data è sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
 
@@ -143,67 +144,19 @@ public class AttivitaInCorso extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public String getDataAutomatica() {
-
-        Calendar calendar = Calendar.getInstance();
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date corrente = calendar.getTime();
-        return formato.format(corrente);
-    }
-
     public String getPrioritaAutomatica(String dataIniziale, String dataFinale) {
 
-        if (dataFinale.length() != 10 || dataFinale.charAt(2) != '/' || dataFinale.charAt(5) != '/') {
+        if(dataFinale.length() != 10 || dataFinale.charAt(2) != '/' || dataFinale.charAt(5) != '/'){
 
             return null;
-        } else {
-
+        }else {
             int annoIniziale = Integer.parseInt(dataIniziale.substring(6, 10));
             int annoFinale = Integer.parseInt(dataFinale.substring(6, 10));
             int annoPriorita;
-            int meseIniziale = Integer.parseInt(dataIniziale.substring(3, 5));
             int meseFinale = Integer.parseInt(dataFinale.substring(3, 5));
             int mesePriorita;
-            int giornoIniziale = Integer.parseInt(dataIniziale.substring(0, 2));
             int giornoFinale = Integer.parseInt(dataFinale.substring(0, 2));
             int giornoPriorita;
-
-            if (annoFinale < annoIniziale) {
-
-                return null;
-            }
-
-            if ((annoIniziale == annoFinale) && (meseIniziale == meseFinale) && (giornoIniziale > giornoFinale)) {
-
-                return null;
-            }
-
-            if ((annoIniziale == annoFinale) && (meseIniziale > meseFinale)) {
-
-                return null;
-            }
-
-            if (meseFinale > 12) {
-
-                return null;
-            }
-
-            if (giornoFinale > 31) {
-
-                return null;
-            }
-
-            if (meseFinale == 2 && giornoFinale > 29) {
-
-                return null;
-            }
-
-            if ((meseFinale == 4 || meseFinale == 6 || meseFinale == 11 || meseFinale == 9) && (giornoFinale == 31)) {
-
-                return null;
-            }
-
 
             if ((annoFinale - annoIniziale) == 0) {
 
@@ -213,7 +166,6 @@ public class AttivitaInCorso extends AppCompatActivity {
                 annoPriorita = (annoFinale - annoIniziale) * 1200;
             }
 
-
             if (dataFinale.charAt(3) == 0) {
 
                 mesePriorita = Character.getNumericValue(dataFinale.charAt(4)) * 100;
@@ -221,7 +173,6 @@ public class AttivitaInCorso extends AppCompatActivity {
 
                 mesePriorita = meseFinale * 100;
             }
-
 
             if (dataFinale.charAt(0) == 0) {
 

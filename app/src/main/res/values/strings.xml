@@ -30,7 +30,6 @@
     <string name="cena_con_mario">Cena con Mario</string>
     <string name="hh_mm">hh:mm</string>
     <string name="ripetizione">Ripetizione:</string>
-    <string name="note">Note:</string>
     <string name="aggiungi_qui_una_nota">Aggiungi qui una nota</string>
     <string name="tipo">Tipo:</string>
     <string name="tipo_personalizzato">Tipo Personalizzato</string>
@@ -39,7 +38,6 @@
     <string name="dalle">Dalle:</string>
     <string name="alle">Alle:</string>
     <string name="mostra_note">TODO</string>
-    <string name="nota">Nota:</string>
     <string name="allarme_impostato">Allarme impostato:</string>
     <string name="allarme">Allarme:</string>
     <string name="di_tipo">Di Tipo:</string>
@@ -51,4 +49,5 @@
     <string name="attivit_asterisco">*Attività:</string>
     <string name="scadenza_asterisco">*Scadenza:</string>
     <string name="nome_asterisco">*Nome:</string>
+    <string name="note">Note:</string>
 </resources>
