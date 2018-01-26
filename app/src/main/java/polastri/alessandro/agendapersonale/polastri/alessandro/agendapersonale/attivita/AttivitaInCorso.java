@@ -84,7 +84,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                                 dialog.dismiss();
                             } else {
 
-                                Toast.makeText(AttivitaInCorso.this, "La data è sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AttivitaInCorso.this, "Hai inserito una data sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
 
