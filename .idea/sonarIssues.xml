@@ -208,6 +208,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_dialog_note_impegni.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_dialog_nuovotipo.xml">
           <value>
             <set />

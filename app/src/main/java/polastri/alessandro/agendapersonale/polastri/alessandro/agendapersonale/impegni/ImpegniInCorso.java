@@ -70,7 +70,7 @@ public class ImpegniInCorso extends AppCompatActivity {
                 final EditText tipoPersonalizzato = v.findViewById(R.id.eaggiungitipo);
 
                 final Spinner ripetizione = v.findViewById(R.id.sripetizione);
-                ArrayAdapter<String> spinnerAdapterRipetizione = new ArrayAdapter<>(ImpegniInCorso.this, android.R.layout.simple_spinner_item, new String[]{"Nessuna", "Ogni giorno", "Ogni settimana", "Ogni mese", "Ogni anno"});
+                ArrayAdapter<String> spinnerAdapterRipetizione = new ArrayAdapter<>(ImpegniInCorso.this, android.R.layout.simple_spinner_item, new String[]{"Mai", "Ogni giorno", "Ogni settimana", "Ogni mese", "Ogni anno"});
                 ripetizione.setAdapter(spinnerAdapterRipetizione);
                 ripetizione.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -145,13 +145,15 @@ public class ImpegniInCorso extends AppCompatActivity {
             }
 
             @Override
-            public void bindView(View v, Context arg1, Cursor crs){
+            public void bindView(View v, Context arg1, Cursor crs) {
                 String oggetto = crs.getString(crs.getColumnIndex(Impegno.CAMPO_OGGETTO));
                 String data = crs.getString(crs.getColumnIndex(Impegno.CAMPO_DATA));
                 String oraIniziale = crs.getString(crs.getColumnIndex(Impegno.CAMPO_ORA_INIZIO));
                 String oraFinale = crs.getString(crs.getColumnIndex(Impegno.CAMPO_ORA_FINALE));
-                String ripetizione = crs.getString(crs.getColumnIndex(Impegno.CAMPO_RIPETIZIONE));
-                String tipo = crs.getString(crs.getColumnIndex(Impegno.CAMPO_TIPO));
+                final String ripetizione = crs.getString(crs.getColumnIndex(Impegno.CAMPO_RIPETIZIONE));
+                final String tipo = crs.getString(crs.getColumnIndex(Impegno.CAMPO_TIPO));
+                final String allarme = crs.getString(crs.getColumnIndex(Impegno.CAMPO_ALLARME));
+                final String nota = crs.getString(crs.getColumnIndex(Impegno.CAMPO_NOTE));
                 TextView txt = v.findViewById(R.id.woggetto);
                 txt.setText(oggetto);
                 txt = v.findViewById(R.id.wdata);
@@ -160,14 +162,33 @@ public class ImpegniInCorso extends AppCompatActivity {
                 txt.setText(oraIniziale);
                 txt = v.findViewById(R.id.worafine);
                 txt.setText(oraFinale);
-                txt = v.findViewById(R.id.wripetizione);
-                txt.setText(ripetizione);
-                txt = v.findViewById(R.id.wtipo);
-                txt.setText(tipo);
                 ImageButton cancellaImpegno = v.findViewById(R.id.cancella_impegno);
                 cancellaImpegno.setOnClickListener(clickListener);
-            }
+                ImageButton mostraNote = v.findViewById(R.id.mostra_note);
+                mostraNote.setOnClickListener(new View.OnClickListener(){
 
+                    @Override
+                    public void onClick(View view){
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ImpegniInCorso.this);
+                        @SuppressLint("InflateParams")
+                        View v = getLayoutInflater().inflate(R.layout.layout_dialog_note_impegni, null);
+
+                        TextView text = v.findViewById(R.id.tdialogAllarme);
+                        text.setText(allarme);
+                        text = v.findViewById(R.id.mnota);
+                        text.setText(nota);
+                        text = v.findViewById(R.id.tripetere);
+                        text.setText(ripetizione);
+                        text = v.findViewById(R.id.mtipo);
+                        text.setText(tipo);
+
+                        builder.setView(v);
+                        final AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                });
+            }
             @Override
             public long getItemId(int position){
 

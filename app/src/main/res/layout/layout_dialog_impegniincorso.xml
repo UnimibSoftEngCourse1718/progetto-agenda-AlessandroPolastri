@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/impegno"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -49,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/data"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -71,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ora_inizio"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -93,6 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ora_fine"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -115,6 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ripetizione"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -134,6 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/allarme"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -156,6 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/note"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -178,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -196,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/aggiungi_tipo"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 

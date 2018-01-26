@@ -37,7 +37,6 @@
     <string name="hh_mm">hh:mm</string>
     <string name="ora_fine">Ora fine:</string>
     <string name="ripetizione">Ripetizione:</string>
-    <string name="allarme">Allarme:</string>
     <string name="note">Note:</string>
     <string name="aggiungi_qui_una_nota">Aggiungi qui una nota</string>
     <string name="tipo">Tipo:</string>
@@ -46,4 +45,10 @@
     <string name="cancella_impegno">TODO</string>
     <string name="dalle">Dalle:</string>
     <string name="alle">Alle:</string>
+    <string name="mostra_note">TODO</string>
+    <string name="nota">Nota:</string>
+    <string name="allarme_impostato">Allarme impostato:</string>
+    <string name="allarme">Allarme:</string>
+    <string name="di_tipo">Di Tipo:</string>
+    <string name="ripetere">Ripetere:</string>
 </resources>

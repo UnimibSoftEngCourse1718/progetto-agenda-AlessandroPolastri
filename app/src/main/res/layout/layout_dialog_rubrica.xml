@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nome"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -48,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cognome"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -70,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/telefono"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -92,6 +95,7 @@
                 android:layout_width="96dp"
                 android:layout_height="wrap_content"
                 android:text="@string/e_mail"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -114,6 +118,7 @@
                 android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -134,6 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/aggiungi_tipo"
+                android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="149dp"
