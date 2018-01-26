@@ -87,7 +87,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                             }
                         } else {
 
-                            Toast.makeText(AttivitaInCorso.this, "Prima inserisci i dati richiesti!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AttivitaInCorso.this, "I campi con * sono obbligatori!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

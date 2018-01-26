@@ -2,7 +2,6 @@
     <string name="app_name">Agenda Personale</string>
     <string name="contatti">Contatti</string>
     <string name="aggiungi">Aggiungi</string>
-    <string name="nome">Nome:</string>
     <string name="cognome">Cognome:</string>
     <string name="salva">Salva</string>
     <string name="todo">TODO</string>
@@ -22,20 +21,14 @@
     <string name="suggerisci_attivit">Suggerisci Attività</string>
     <string name="aggiungi_attivita">Aggiungi Attivita</string>
     <string name="aggiungi_contatto_main">Aggiungi Contatto</string>
-    <string name="oggetto">Oggetto:</string>
     <string name="comprare_il_latte">Comprare il latte</string>
-    <string name="scadenza">Scadenza:</string>
     <string name="gg_mm_aaaa">gg/mm/aaaa</string>
     <string name="salva_attivita">Salva</string>
     <string name="scade_il">Scade il:</string>
     <string name="impegni">Impegni</string>
     <string name="aggiungi_impegno">Aggiungi Impegno</string>
-    <string name="impegno">Impegno:</string>
     <string name="cena_con_mario">Cena con Mario</string>
-    <string name="data">Data:</string>
-    <string name="ora_inizio">Ora inizio:</string>
     <string name="hh_mm">hh:mm</string>
-    <string name="ora_fine">Ora fine:</string>
     <string name="ripetizione">Ripetizione:</string>
     <string name="note">Note:</string>
     <string name="aggiungi_qui_una_nota">Aggiungi qui una nota</string>
@@ -51,4 +44,11 @@
     <string name="allarme">Allarme:</string>
     <string name="di_tipo">Di Tipo:</string>
     <string name="ripetere">Ripetere:</string>
+    <string name="impegno_asterisco">*Impegno:</string>
+    <string name="data_asterisco">*Data:</string>
+    <string name="ora_inizio_asterisco">*Ora inizio:</string>
+    <string name="ora_fine_asterisco">*Ora fine:</string>
+    <string name="attivit_asterisco">*Attività:</string>
+    <string name="scadenza_asterisco">*Scadenza:</string>
+    <string name="nome_asterisco">*Nome:</string>
 </resources>

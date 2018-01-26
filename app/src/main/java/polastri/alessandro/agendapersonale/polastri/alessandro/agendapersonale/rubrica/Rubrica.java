@@ -107,7 +107,7 @@ public class Rubrica extends AppCompatActivity {
                             }
                         } else{
 
-                            Toast.makeText(Rubrica.this, "Il nome è obbligatorio!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Rubrica.this, "Il campi con * sono obbligatori!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -25,7 +25,7 @@
                 android:id="@+id/nomeContatto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nome"
+                android:text="@string/nome_asterisco"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />

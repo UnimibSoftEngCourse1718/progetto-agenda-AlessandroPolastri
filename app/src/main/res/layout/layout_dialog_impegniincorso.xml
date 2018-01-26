@@ -26,7 +26,7 @@
                 android:id="@+id/timpegno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/impegno"
+                android:text="@string/impegno_asterisco"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -49,7 +49,7 @@
                 android:id="@+id/tdata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/data"
+                android:text="@string/data_asterisco"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -72,7 +72,7 @@
                 android:id="@+id/torainizio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ora_inizio"
+                android:text="@string/ora_inizio_asterisco"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -95,7 +95,7 @@
                 android:id="@+id/torafine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ora_fine"
+                android:text="@string/ora_fine_asterisco"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -125,7 +125,7 @@
 
             <Spinner
                 android:id="@+id/sripetizione"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </TableRow>
