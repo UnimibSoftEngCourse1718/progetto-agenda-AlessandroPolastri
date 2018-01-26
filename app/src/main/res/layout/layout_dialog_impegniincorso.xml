@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/cena_con_mario"
-                android:inputType="textCapCharacters|textCapWords|textPersonName"
+                android:inputType="textCapSentences"
                 android:textAlignment="center" />
         </TableRow>
 
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/aggiungi_qui_una_nota"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:textAlignment="center" />
         </TableRow>
 
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/tipo_personalizzato"
-                android:inputType="textCapCharacters"
+                android:inputType="textCapWords"
                 android:textAlignment="center" />
         </TableRow>
     </TableLayout>
