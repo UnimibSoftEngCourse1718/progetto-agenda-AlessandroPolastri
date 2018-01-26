@@ -8,8 +8,8 @@
 
     <TableLayout
         android:id="@+id/tableLayout3"
-        android:layout_width="331dp"
-        android:layout_height="373dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/aggiungi_qui_una_nota"
-                android:inputType="textCapCharacters"
+                android:inputType="textCapWords"
                 android:textAlignment="center" />
         </TableRow>
 
