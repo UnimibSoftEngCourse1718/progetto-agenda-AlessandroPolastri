@@ -73,12 +73,8 @@ public class ControllaData {
         int ore = Integer.parseInt(ora.substring(0, 2));
         int minuti = Integer.parseInt(ora.substring(3, 5));
 
-        if(ore >= 0 && ore <= 23 && minuti >= 0 && minuti <= 59){
+        return ore >= 0 && ore <= 23 && minuti >= 0 && minuti <= 59;
 
-            return true;
-        }
-
-        return false;
     }
 
     public static String getDataAutomatica() {

@@ -6,14 +6,18 @@
     android:layout_height="match_parent">
 
     <TableLayout
+        android:id="@+id/tableLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/minfo"
+        app:layout_constraintVertical_bias="0.034">
 
         <TableRow
             android:layout_width="match_parent"
@@ -32,8 +36,9 @@
                 android:id="@+id/mtipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@android:color/black" />
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/black"
+                android:gravity="start" />
         </TableRow>
 
         <TableRow
@@ -53,8 +58,9 @@
                 android:id="@+id/tripetere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@android:color/black" />
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/black"
+                android:gravity="start" />
         </TableRow>
 
         <TableRow
@@ -74,9 +80,10 @@
                 android:id="@+id/tdialogAllarme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:gravity="start" />
         </TableRow>
 
         <TableRow
@@ -97,11 +104,29 @@
                 android:layout_width="261dp"
                 android:layout_height="100dp"
                 android:lines="6"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:gravity="start" />
 
         </TableRow>
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/minfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/dettagli"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

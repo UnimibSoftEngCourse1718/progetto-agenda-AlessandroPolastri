@@ -50,4 +50,5 @@
     <string name="scadenza_asterisco">*Scadenza:</string>
     <string name="nome_asterisco">*Nome:</string>
     <string name="note">Note:</string>
+    <string name="dettagli">Dettagli</string>
 </resources>
