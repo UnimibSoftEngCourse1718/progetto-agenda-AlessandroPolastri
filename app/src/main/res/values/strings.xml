@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Agenda Personale</string>
+    <string name="app_name">Agenda</string>
     <string name="contatti">Contatti</string>
     <string name="aggiungi">Aggiungi</string>
     <string name="cognome">Cognome:</string>
