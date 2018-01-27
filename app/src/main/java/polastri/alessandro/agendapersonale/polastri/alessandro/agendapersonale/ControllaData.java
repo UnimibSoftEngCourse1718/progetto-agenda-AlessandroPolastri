@@ -77,6 +77,24 @@ public class ControllaData {
 
     }
 
+    public static boolean controllaOrario(String oraIniziale, String oraFinale){
+
+        int hIniziale = Integer.parseInt(oraIniziale.substring(0, 2));
+        int mIniziale = Integer.parseInt(oraIniziale.substring(3, 5));
+        int hFinale = Integer.parseInt(oraFinale.substring(0, 2));
+        int mFinale = Integer.parseInt(oraFinale.substring(3, 5));
+
+        if(hIniziale > hFinale){
+
+            return false;
+        } else if(hIniziale == hFinale && mIniziale >= mFinale){
+
+            return false;
+        }
+
+        return true;
+    }
+
     public static String getDataAutomatica() {
 
         Calendar calendar = Calendar.getInstance();

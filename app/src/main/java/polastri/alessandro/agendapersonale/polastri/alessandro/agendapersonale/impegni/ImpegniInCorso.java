@@ -37,6 +37,7 @@ public class ImpegniInCorso extends AppCompatActivity {
     private ListView listView = null;
     private String selezioneSpinnerTipo;
     private String selezioneSpinnerRipetizione;
+    private String selezioneSpinnerAllarme;
     private View.OnClickListener clickListener = new View.OnClickListener(){
 
         @Override
@@ -70,7 +71,6 @@ public class ImpegniInCorso extends AppCompatActivity {
                 final EditText data = v.findViewById(R.id.edata);
                 final EditText oraInizio = v.findViewById(R.id.eorainizio);
                 final EditText oraFinale = v.findViewById(R.id.eorafine);
-                final EditText allarme = v.findViewById(R.id.eallarme);
                 final EditText note = v.findViewById(R.id.enote);
                 final EditText tipoPersonalizzato = v.findViewById(R.id.eaggiungitipo);
 
@@ -104,6 +104,21 @@ public class ImpegniInCorso extends AppCompatActivity {
                     }
                 });
 
+                final Spinner allarme = v.findViewById(R.id.sallarme);
+                ArrayAdapter<String> spinnerAdapterAllarme = new ArrayAdapter<>(ImpegniInCorso.this, android.R.layout.simple_spinner_item, new String[]{"Nessuno", "15 minuti prima", "30 minuti prima", "45 minuti prima", "un'ora prima"});
+                allarme.setAdapter(spinnerAdapterAllarme);
+                allarme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                    public void onItemSelected(AdapterView<?> adapter, View view, int pos, long id) {
+
+                        selezioneSpinnerAllarme = (String) adapter.getItemAtPosition(pos);
+                    }
+
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        throw(new UnsupportedOperationException());
+                    }
+                });
+
                 builder.setView(v);
                 final AlertDialog dialog = builder.create();
                 dialog.show();
@@ -116,34 +131,25 @@ public class ImpegniInCorso extends AppCompatActivity {
 
                         if(!oggetto.getText().toString().isEmpty() && !data.getText().toString().isEmpty() && !oraInizio.getText().toString().isEmpty() && !oraFinale.getText().toString().isEmpty()){
 
-                            if(!tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && ControllaData.controllaOra(allarme.getEditableText().toString())){
-                                db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, allarme.getEditableText().toString(), note.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
+                            if(!tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && ControllaData.controllaOrario(oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString())){
+                                db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, selezioneSpinnerAllarme, note.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
                                 Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
                                 adapter.changeCursor(db.query());
                                 dialog.dismiss();
-                            } else if(ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && ControllaData.controllaOra(allarme.getEditableText().toString())){
-
-                                db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, allarme.getEditableText().toString(), note.getEditableText().toString(), selezioneSpinnerTipo);
-                                Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
-                                adapter.changeCursor(db.query());
-                                dialog.dismiss();
-                            } else if(!tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && allarme.getEditableText().toString().isEmpty()){
-                                db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, "Nessuno", note.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
-                                Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
-                                adapter.changeCursor(db.query());
-                                dialog.dismiss();
-                            } else if(ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && allarme.getEditableText().toString().isEmpty()){
-
-                                db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, "Nessuno", note.getEditableText().toString(), selezioneSpinnerTipo);
+                            } else if(tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && ControllaData.controllaOrario(oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString())){
+                                db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, selezioneSpinnerAllarme, note.getEditableText().toString(), selezioneSpinnerTipo);
                                 Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
                                 adapter.changeCursor(db.query());
                                 dialog.dismiss();
                             } else if(!ControllaData.controlla(data.getEditableText().toString())){
 
                                 Toast.makeText(ImpegniInCorso.this, "Hai inserito una data sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
-                            } else if(!ControllaData.controllaOra(oraInizio.getEditableText().toString()) || !ControllaData.controllaOra(oraFinale.getEditableText().toString()) || !ControllaData.controllaOra(allarme.getEditableText().toString())){
+                            } else if(!ControllaData.controllaOra(oraInizio.getEditableText().toString()) || !ControllaData.controllaOra(oraFinale.getEditableText().toString())){
 
                                 Toast.makeText(ImpegniInCorso.this, "Hai inserito un ora sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
+                            } else{
+
+                                Toast.makeText(ImpegniInCorso.this, "Gli orari dell'appuntamento sono temporalmente sbagliati! Ci hai provato!", Toast.LENGTH_LONG).show();
                             }
                         } else{
 
