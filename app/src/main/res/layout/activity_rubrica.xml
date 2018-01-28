@@ -45,7 +45,7 @@
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:inputType="none|text"
-        android:queryHint='Ricerca per tipo: Es: "amico"'
+        android:queryHint="Ricerca per TIPO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
