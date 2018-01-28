@@ -64,7 +64,7 @@ class DBManagerImpegno {
         }
     }
 
-    static Cursor cercaTipo(String ricerca) {
+    static Cursor cerca(String ricerca) {
 
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
@@ -79,7 +79,8 @@ class DBManagerImpegno {
                 Impegno.CAMPO_NOTE + "," +
                 Impegno.CAMPO_TIPO +
                 " FROM " + Impegno.NOME_TABELLA +
-                " WHERE " +  Impegno.CAMPO_TIPO + "  LIKE  '%" + ricerca + "%' "
+                " WHERE " +  Impegno.CAMPO_TIPO + "  LIKE  '%" + ricerca + "%' OR " +
+                Impegno.CAMPO_DATA + "  LIKE  '%" + ricerca + "%' "
                 ;
 
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -100,9 +101,9 @@ class DBManagerImpegno {
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
         String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_FINALE + " = ? OR " +
-                Impegno.CAMPO_ORA_INIZIO + " = ?";
+                Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " = ?";
 
-        Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale});
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, data, oraFinale});
 
         if (cursor == null) {
 
@@ -121,9 +122,10 @@ class DBManagerImpegno {
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
         String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " +
-                Impegno.CAMPO_ORA_INIZIO + " < ? OR " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " < ?";
+                Impegno.CAMPO_ORA_INIZIO + " < ? OR " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " +
+                Impegno.CAMPO_ORA_FINALE + " < ?";
 
-        Cursor cursor = db.rawQuery(select, new String[]{data, oraFinale, oraIniziale, oraIniziale, oraFinale});
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraFinale, oraIniziale,data, oraIniziale, oraFinale});
 
         if (cursor == null) {
 
@@ -143,8 +145,8 @@ class DBManagerImpegno {
 
         String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " +
                 Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? OR " +
-                Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " +
-                Impegno.CAMPO_ORA_FINALE + " < ?";
+                Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " +
+                Impegno.CAMPO_ORA_FINALE + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " < ?";
 
         Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale, oraIniziale, oraFinale, oraIniziale, oraFinale, oraIniziale, oraFinale});
 

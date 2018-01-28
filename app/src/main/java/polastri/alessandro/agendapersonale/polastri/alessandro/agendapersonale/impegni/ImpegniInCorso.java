@@ -241,11 +241,11 @@ public class ImpegniInCorso extends AppCompatActivity {
             public boolean onQueryTextSubmit(String s) {
 
                 Log.d(TAG, "onQueryTextSubmit ");
-                cursor = DBManagerImpegno.cercaTipo(s);
+                cursor = DBManagerImpegno.cerca(s);
 
                 if (cursor == null) {
 
-                    Toast.makeText(ImpegniInCorso.this, "Nessun impegno con il tipo cercato!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ImpegniInCorso.this, "Nessun impegno trovato!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(ImpegniInCorso.this, " Trovati!", Toast.LENGTH_SHORT).show();
@@ -259,7 +259,7 @@ public class ImpegniInCorso extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
 
                 Log.d(TAG, "onQueryTextChange ");
-                cursor = DBManagerImpegno.cercaTipo(s);
+                cursor = DBManagerImpegno.cerca(s);
 
                 if (cursor != null) {
 
