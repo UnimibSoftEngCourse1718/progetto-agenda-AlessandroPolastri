@@ -94,4 +94,69 @@ class DBManagerImpegno {
 
         return cursor;
     }
+
+    static boolean controllaImpegni(String data, String oraIniziale, String oraFinale) {
+
+        SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
+
+        String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_FINALE + " = ? OR " +
+                Impegno.CAMPO_ORA_INIZIO + " = ?";
+
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale});
+
+        if (cursor == null) {
+
+            return true;
+        } else if (!cursor.moveToFirst()) {
+
+            cursor.close();
+            return true;
+        }
+
+        return false;
+    }
+
+    static boolean controllaImpegni2(String data, String oraIniziale, String oraFinale) {
+
+        SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
+
+        String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " +
+                Impegno.CAMPO_ORA_INIZIO + " < ? OR " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " < ?";
+
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraFinale, oraIniziale, oraIniziale, oraFinale});
+
+        if (cursor == null) {
+
+            return true;
+        } else if (!cursor.moveToFirst()) {
+
+            cursor.close();
+            return true;
+        }
+
+        return false;
+    }
+
+    static boolean controllaImpegni3(String data, String oraIniziale, String oraFinale) {
+
+        SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
+
+        String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " +
+                Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? OR " +
+                Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " +
+                Impegno.CAMPO_ORA_FINALE + " < ?";
+
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale, oraIniziale, oraFinale, oraIniziale, oraFinale, oraIniziale, oraFinale});
+
+        if (cursor == null) {
+
+            return true;
+        } else if (!cursor.moveToFirst()) {
+
+            cursor.close();
+            return true;
+        }
+
+        return false;
+    }
 }
