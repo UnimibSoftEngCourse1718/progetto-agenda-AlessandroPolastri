@@ -138,6 +138,7 @@ public class AttivitaInCorso extends AppCompatActivity {
                 String suggeriscimeloGetMin = DBManagerAttivita.getMin();
                 String suggeriscimelo = DBManagerAttivita.ottieniMinimo(suggeriscimeloGetMin);
                 if(suggeriscimelo != null) {
+
                     Toast.makeText(AttivitaInCorso.this, "Prossima attività in scadenza:\n" + suggeriscimelo, Toast.LENGTH_LONG).show();
                 } else{
 
