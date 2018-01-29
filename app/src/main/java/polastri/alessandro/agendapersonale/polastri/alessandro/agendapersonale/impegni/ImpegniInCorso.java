@@ -131,35 +131,42 @@ public class ImpegniInCorso extends AppCompatActivity {
 
                         if(!oggetto.getText().toString().isEmpty() && !data.getText().toString().isEmpty() && !oraInizio.getText().toString().isEmpty() && !oraFinale.getText().toString().isEmpty()) {
 
-                            if (DBManagerImpegno.controllaImpegni(data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString()) &&
-                                    DBManagerImpegno.controllaImpegni2(data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString()) &&
-                                    DBManagerImpegno.controllaImpegni3(data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString()) ) {
+                            if (ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString())
+                                    && ControllaData.controllaOra(oraFinale.getEditableText().toString())
+                                    && ControllaData.controllaOrario(oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString())) {
 
-                                if (!tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && ControllaData.controllaOrario(oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString())) {
-                                    db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, selezioneSpinnerAllarme, note.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
-                                    Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
-                                    adapter.changeCursor(db.query());
-                                    dialog.dismiss();
-                                } else if (tipoPersonalizzato.getText().toString().isEmpty() && ControllaData.controlla(data.getEditableText().toString()) && ControllaData.controllaOra(oraInizio.getEditableText().toString()) && ControllaData.controllaOra(oraFinale.getEditableText().toString()) && ControllaData.controllaOrario(oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString())) {
-                                    db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, selezioneSpinnerAllarme, note.getEditableText().toString(), selezioneSpinnerTipo);
-                                    Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
-                                    adapter.changeCursor(db.query());
-                                    dialog.dismiss();
-                                } else if (!ControllaData.controlla(data.getEditableText().toString())) {
+                                if (DBManagerImpegno.controllaImpegni(data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString()) &&
+                                        DBManagerImpegno.controllaImpegni2(data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString()) &&
+                                        DBManagerImpegno.controllaImpegni3(data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString())) {
 
-                                    Toast.makeText(ImpegniInCorso.this, "Hai inserito una data sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
-                                } else if (!ControllaData.controllaOra(oraInizio.getEditableText().toString()) || !ControllaData.controllaOra(oraFinale.getEditableText().toString())) {
+                                    if (!tipoPersonalizzato.getText().toString().isEmpty()) {
 
-                                    Toast.makeText(ImpegniInCorso.this, "Hai inserito un ora sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
+                                        db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, selezioneSpinnerAllarme, note.getEditableText().toString(), tipoPersonalizzato.getEditableText().toString());
+                                        Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
+                                        adapter.changeCursor(db.query());
+                                        dialog.dismiss();
+                                    } else if (tipoPersonalizzato.getText().toString().isEmpty()) {
+
+                                        db.salvaImpegno(oggetto.getEditableText().toString(), data.getEditableText().toString(), oraInizio.getEditableText().toString(), oraFinale.getEditableText().toString(), selezioneSpinnerRipetizione, selezioneSpinnerAllarme, note.getEditableText().toString(), selezioneSpinnerTipo);
+                                        Toast.makeText(ImpegniInCorso.this, "Impegno inserito!", Toast.LENGTH_SHORT).show();
+                                        adapter.changeCursor(db.query());
+                                        dialog.dismiss();
+                                    }
                                 } else {
 
-                                    Toast.makeText(ImpegniInCorso.this, "Gli orari dell'appuntamento sono temporalmente sbagliati! Ci hai provato!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ImpegniInCorso.this, "Sei già impegnato nell'orario inserito! Cambialo!", Toast.LENGTH_SHORT).show();
                                 }
+                            } else if (!ControllaData.controlla(data.getEditableText().toString())) {
+
+                                Toast.makeText(ImpegniInCorso.this, "Hai inserito una data sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
+                            } else if (!ControllaData.controllaOra(oraInizio.getEditableText().toString()) || !ControllaData.controllaOra(oraFinale.getEditableText().toString())) {
+
+                                Toast.makeText(ImpegniInCorso.this, "Hai inserito un ora sbagliata! Correggila!", Toast.LENGTH_SHORT).show();
                             } else {
 
-                                Toast.makeText(ImpegniInCorso.this, "Sei già impegnato nell'orario inserito! Cambialo!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ImpegniInCorso.this, "Gli orari dell'appuntamento sono temporalmente sbagliati! Ci hai provato!", Toast.LENGTH_LONG).show();
                             }
-                        } else {
+                        }else {
 
                             Toast.makeText(ImpegniInCorso.this, "I campi con * sono obbligatori!", Toast.LENGTH_SHORT).show();
                         }

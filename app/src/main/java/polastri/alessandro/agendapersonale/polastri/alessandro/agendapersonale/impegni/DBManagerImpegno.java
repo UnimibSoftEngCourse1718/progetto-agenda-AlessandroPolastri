@@ -125,7 +125,7 @@ class DBManagerImpegno {
                 Impegno.CAMPO_ORA_INIZIO + " < ? OR " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " +
                 Impegno.CAMPO_ORA_FINALE + " < ?";
 
-        Cursor cursor = db.rawQuery(select, new String[]{data, oraFinale, oraIniziale,data, oraIniziale, oraFinale});
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraFinale, oraIniziale, data, oraIniziale, oraFinale});
 
         if (cursor == null) {
 
@@ -148,7 +148,7 @@ class DBManagerImpegno {
                 Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " +
                 Impegno.CAMPO_ORA_FINALE + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " < ?";
 
-        Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale, oraIniziale, oraFinale, oraIniziale, oraFinale, oraIniziale, oraFinale});
+        Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale, oraIniziale, oraFinale, data, oraIniziale, oraFinale, oraIniziale, oraFinale});
 
         if (cursor == null) {
 

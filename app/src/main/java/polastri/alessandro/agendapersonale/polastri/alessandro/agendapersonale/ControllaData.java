@@ -84,15 +84,7 @@ public class ControllaData {
         int hFinale = Integer.parseInt(oraFinale.substring(0, 2));
         int mFinale = Integer.parseInt(oraFinale.substring(3, 5));
 
-        if(hIniziale > hFinale){
-
-            return false;
-        } else if(hIniziale == hFinale && mIniziale >= mFinale){
-
-            return false;
-        }
-
-        return true;
+        return !((hIniziale == hFinale && mIniziale >= mFinale) || hIniziale > hFinale);
     }
 
     public static String getDataAutomatica() {
