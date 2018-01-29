@@ -29,37 +29,17 @@ public class ControllaData {
             int giorno = Integer.parseInt(data.substring(0, 2));
             int giornoCorrente = Integer.parseInt(dataCorrente.substring(0, 2));
 
-            if (anno < annoCorrente) {
+            if (anno < annoCorrente ||
+                    (annoCorrente == anno) && (meseCorrente == mese) && (giornoCorrente > giorno) ||
+                    (annoCorrente == anno) && (meseCorrente > mese)) {
 
                 return false;
             }
 
-            if ((annoCorrente == anno) && (meseCorrente == mese) && (giornoCorrente > giorno)) {
-
-                return false;
-            }
-
-            if ((annoCorrente == anno) && (meseCorrente > mese)) {
-
-                return false;
-            }
-
-            if (mese > 12) {
-
-                return false;
-            }
-
-            if (giorno > 31) {
-
-                return false;
-            }
-
-            if (mese == 2 && giorno > 29) {
-
-                return false;
-            }
-
-            if ((mese == 4 || mese == 6 || mese == 11 || mese == 9) && (giorno == 31)) {
+            if (mese > 12 ||
+                    giorno > 31 ||
+                    (mese == 2 && giorno > 29) ||
+                    ((mese == 4 || mese == 6 || mese == 11 || mese == 9) && (giorno == 31))) {
 
                 return false;
             }

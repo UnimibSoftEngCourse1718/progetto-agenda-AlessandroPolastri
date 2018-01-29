@@ -15,6 +15,7 @@ class DBManagerImpegno {
     private static final String SELECT = "SELECT * FROM ";
     private static final String EQUAL_AND = " = ? AND ";
     private static final String GREATER_AND = " > ? AND ";
+    private static final String MINOR_AND = " < ? AND ";
 
     DBManagerImpegno(Context context){
 
@@ -49,7 +50,7 @@ class DBManagerImpegno {
 
         try{
 
-            return db.delete(NOME_TABELLA, Impegno.CAMPO_ID + "=?", new String[]{Long.toString(id)}) > 0;
+            return db.delete(NOME_TABELLA, Impegno.CAMPO_ID + " = ?", new String[]{Long.toString(id)}) > 0;
         } catch(SQLiteException sqle){
 
             return false;
@@ -148,8 +149,8 @@ class DBManagerImpegno {
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
         String select = SELECT + Impegno.NOME_TABELLA + WHERE + Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + GREATER_AND +
-                Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + GREATER_AND + Impegno.CAMPO_ORA_FINALE + " > ? OR " +
-                Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " +
+                Impegno.CAMPO_ORA_INIZIO + MINOR_AND + Impegno.CAMPO_ORA_FINALE + GREATER_AND + Impegno.CAMPO_ORA_FINALE + " > ? OR " +
+                Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + MINOR_AND + Impegno.CAMPO_ORA_INIZIO + MINOR_AND +
                 Impegno.CAMPO_ORA_FINALE + GREATER_AND + Impegno.CAMPO_ORA_FINALE + " < ?";
 
         Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale, oraIniziale, oraFinale, data, oraIniziale, oraFinale, oraIniziale, oraFinale});
