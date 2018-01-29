@@ -16,10 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import polastri.alessandro.agendapersonale.R;
 import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.ControllaData;
 

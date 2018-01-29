@@ -21,16 +21,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import polastri.alessandro.agendapersonale.R;
 import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.ControllaData;
 
 public class ImpegniInCorso extends AppCompatActivity {
 
-    private final static String TAG = ImpegniInCorso.class.getName();
+    private static final String TAG = ImpegniInCorso.class.getName();
     private Cursor cursor;
     private DBManagerImpegno db = null;
     private CursorAdapter adapter;

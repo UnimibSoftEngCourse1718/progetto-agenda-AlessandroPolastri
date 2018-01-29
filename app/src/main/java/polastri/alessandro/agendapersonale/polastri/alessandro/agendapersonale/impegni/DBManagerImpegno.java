@@ -11,20 +11,24 @@ import static polastri.alessandro.agendapersonale.polastri.alessandro.agendapers
 class DBManagerImpegno {
 
     private static DBHelperImpegno dbHelperImpegno;
+    private static final String WHERE = " WHERE ";
+    private static final String SELECT = "SELECT * FROM ";
+    private static final String EQUAL_AND = " = ? AND ";
+    private static final String GREATER_AND = " > ? AND ";
 
     DBManagerImpegno(Context context){
 
         dbHelperImpegno = new DBHelperImpegno(context);
     }
 
-    void salvaImpegno(String oggetto, String data, String ora_inizio, String ora_finale, String ripetizione, String allarme, String note, String tipo){
+    void salvaImpegno(String oggetto, String data, String oraInizio, String oraFinale, String ripetizione, String allarme, String note, String tipo){
 
         SQLiteDatabase db = dbHelperImpegno.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(Impegno.CAMPO_OGGETTO, oggetto);
         cv.put(Impegno.CAMPO_DATA, data);
-        cv.put(Impegno.CAMPO_ORA_INIZIO, ora_inizio);
-        cv.put(Impegno.CAMPO_ORA_FINALE, ora_finale);
+        cv.put(Impegno.CAMPO_ORA_INIZIO, oraInizio);
+        cv.put(Impegno.CAMPO_ORA_FINALE, oraFinale);
         cv.put(Impegno.CAMPO_RIPETIZIONE, ripetizione);
         cv.put(Impegno.CAMPO_ALLARME, allarme);
         cv.put(Impegno.CAMPO_NOTE, note);
@@ -79,7 +83,7 @@ class DBManagerImpegno {
                 Impegno.CAMPO_NOTE + "," +
                 Impegno.CAMPO_TIPO +
                 " FROM " + Impegno.NOME_TABELLA +
-                " WHERE " +  Impegno.CAMPO_TIPO + "  LIKE  '%" + ricerca + "%' OR " +
+                WHERE +  Impegno.CAMPO_TIPO + "  LIKE  '%" + ricerca + "%' OR " +
                 Impegno.CAMPO_DATA + "  LIKE  '%" + ricerca + "%' "
                 ;
 
@@ -100,8 +104,8 @@ class DBManagerImpegno {
 
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
-        String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_FINALE + " = ? OR " +
-                Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " = ?";
+        String select = SELECT + Impegno.NOME_TABELLA + WHERE + Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_FINALE + " = ? OR " +
+                Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + " = ?";
 
         Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, data, oraFinale});
 
@@ -121,8 +125,8 @@ class DBManagerImpegno {
 
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
-        String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " +
-                Impegno.CAMPO_ORA_INIZIO + " < ? OR " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " +
+        String select = SELECT + Impegno.NOME_TABELLA + WHERE + Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_FINALE + GREATER_AND +
+                Impegno.CAMPO_ORA_INIZIO + " < ? OR " + Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + GREATER_AND +
                 Impegno.CAMPO_ORA_FINALE + " < ?";
 
         Cursor cursor = db.rawQuery(select, new String[]{data, oraFinale, oraIniziale, data, oraIniziale, oraFinale});
@@ -143,10 +147,10 @@ class DBManagerImpegno {
 
         SQLiteDatabase db = dbHelperImpegno.getReadableDatabase();
 
-        String select = "SELECT * FROM " + Impegno.NOME_TABELLA + " WHERE " + Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " > ? AND " +
-                Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " > ? OR " +
-                Impegno.CAMPO_DATA + " = ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " +
-                Impegno.CAMPO_ORA_FINALE + " > ? AND " + Impegno.CAMPO_ORA_FINALE + " < ?";
+        String select = SELECT + Impegno.NOME_TABELLA + WHERE + Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + GREATER_AND +
+                Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_FINALE + GREATER_AND + Impegno.CAMPO_ORA_FINALE + " > ? OR " +
+                Impegno.CAMPO_DATA + EQUAL_AND + Impegno.CAMPO_ORA_INIZIO + " < ? AND " + Impegno.CAMPO_ORA_INIZIO + " < ? AND " +
+                Impegno.CAMPO_ORA_FINALE + GREATER_AND + Impegno.CAMPO_ORA_FINALE + " < ?";
 
         Cursor cursor = db.rawQuery(select, new String[]{data, oraIniziale, oraFinale, oraIniziale, oraFinale, data, oraIniziale, oraFinale, oraIniziale, oraFinale});
 

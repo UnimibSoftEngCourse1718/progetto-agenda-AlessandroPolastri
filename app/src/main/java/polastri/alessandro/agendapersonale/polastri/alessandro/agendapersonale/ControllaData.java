@@ -8,6 +8,11 @@ import java.util.Date;
 
 public class ControllaData {
 
+    private ControllaData() {
+
+        throw new IllegalStateException("Utility class");
+    }
+
     public static boolean controlla(String data){
 
         String dataCorrente = getDataAutomatica();

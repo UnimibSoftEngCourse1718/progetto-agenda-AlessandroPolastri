@@ -25,7 +25,7 @@ import polastri.alessandro.agendapersonale.R;
 
 public class Rubrica extends AppCompatActivity {
 
-    private final static String TAG = Rubrica.class.getName();
+    private static final String TAG = Rubrica.class.getName();
     private DBManagerRubrica db = null;
     private CursorAdapter adapter;
     private ListView listView = null;
