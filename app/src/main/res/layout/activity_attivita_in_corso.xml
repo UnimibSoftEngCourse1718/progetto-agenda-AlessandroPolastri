@@ -9,15 +9,15 @@
     <ListView
         android:id="@+id/lista_attivita_in_corso"
         android:layout_width="395dp"
-        android:layout_height="525dp"
+        android:layout_height="486dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ricerca_attivita_data" />
 
     <Button
         android:id="@+id/suggerisci_attivita_in_corso"
@@ -45,4 +45,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_attivita_in_corso"
         android:layout_marginRight="8dp" tools:targetApi="lollipop" />
+
+    <SearchView
+        android:id="@+id/ricerca_attivita_data"
+        android:layout_width="395dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:queryHint="Ricerca per DATA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +23,9 @@ import polastri.alessandro.agendapersonale.polastri.alessandro.agendapersonale.C
 
 public class AttivitaInCorso extends AppCompatActivity {
 
+    private static final String TAG = AttivitaInCorso.class.getName();
     private DBManagerAttivita db = null;
+    private Cursor cursor;
     private CursorAdapter adapter;
     private ListView listView = null;
     private View.OnClickListener clickListener = new View.OnClickListener(){
@@ -140,6 +144,42 @@ public class AttivitaInCorso extends AppCompatActivity {
 
                     Toast.makeText(AttivitaInCorso.this, "Prima devi inserire un'attività!", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        SearchView ricerca = findViewById(R.id.ricerca_attivita_data);
+        ricerca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                Log.d(TAG, "onQueryTextSubmit ");
+                cursor = DBManagerAttivita.cerca(s);
+
+                if (cursor == null) {
+
+                    Toast.makeText(AttivitaInCorso.this, "Nessuna attività trovato!", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Toast.makeText(AttivitaInCorso.this, " Trovate!", Toast.LENGTH_SHORT).show();
+                }
+
+                adapter.swapCursor(cursor);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                Log.d(TAG, "onQueryTextChange ");
+                cursor = DBManagerAttivita.cerca(s);
+
+                if (cursor != null) {
+
+                    adapter.swapCursor(cursor);
+                }
+
+                return false;
             }
         });
 

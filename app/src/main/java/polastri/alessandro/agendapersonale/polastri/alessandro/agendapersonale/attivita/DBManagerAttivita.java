@@ -109,4 +109,31 @@ class DBManagerAttivita {
             return cursor.getString(trovato);
         }
     }
+
+    static Cursor cerca(String ricerca) {
+
+        SQLiteDatabase db = dbHelperAttivita.getReadableDatabase();
+
+        String selectQuery =  "SELECT  rowid as " +
+                Attivita.CAMPO_ID + "," +
+                Attivita.CAMPO_OGGETTO + "," +
+                Attivita.CAMPO_INIZIO + "," +
+                Attivita.CAMPO_FINE + "," +
+                Attivita.CAMPO_PRIORITA +
+                " FROM " + Attivita.NOME +
+                " WHERE " +  Attivita.CAMPO_FINE + "  LIKE  '%" + ricerca + "%'"
+                ;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+
+            cursor.close();
+            return null;
+        }
+
+        return cursor;
+    }
 }

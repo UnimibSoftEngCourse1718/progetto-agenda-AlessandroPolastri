@@ -101,7 +101,7 @@ public class ImpegniInCorso extends AppCompatActivity {
                 });
 
                 final Spinner allarme = v.findViewById(R.id.sallarme);
-                ArrayAdapter<String> spinnerAdapterAllarme = new ArrayAdapter<>(ImpegniInCorso.this, android.R.layout.simple_spinner_item, new String[]{"Nessuno", "15 minuti prima", "30 minuti prima", "45 minuti prima", "un'ora prima"});
+                ArrayAdapter<String> spinnerAdapterAllarme = new ArrayAdapter<>(ImpegniInCorso.this, android.R.layout.simple_spinner_item, new String[]{"Nessuno", "15 minuti prima", "30 minuti prima", "45 minuti prima", "Un'ora prima"});
                 allarme.setAdapter(spinnerAdapterAllarme);
                 allarme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
