@@ -124,9 +124,9 @@ public class AttivitaInCorso extends AppCompatActivity {
             @Override
             public long getItemId(int position) {
 
-                Cursor cursor = adapter.getCursor();
-                cursor.moveToPosition(position);
-                return cursor.getLong(cursor.getColumnIndex(Attivita.CAMPO_ID));
+                Cursor crs = adapter.getCursor();
+                crs.moveToPosition(position);
+                return crs.getLong(crs.getColumnIndex(Attivita.CAMPO_ID));
             }
         };
 

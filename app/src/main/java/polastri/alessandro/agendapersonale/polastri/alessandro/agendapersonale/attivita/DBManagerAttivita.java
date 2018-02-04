@@ -11,6 +11,7 @@ import static polastri.alessandro.agendapersonale.polastri.alessandro.agendapers
 class DBManagerAttivita {
 
     private static DBHelperAttivita dbHelperAttivita;
+    private static final String FROM = " FROM ";
 
     DBManagerAttivita(Context context){
 
@@ -67,7 +68,7 @@ class DBManagerAttivita {
         String selectQuery = "SELECT MIN(" +
                 Attivita.CAMPO_PRIORITA + ")" +
                 " AS MINIMO" +
-                " FROM " + Attivita.NOME;
+                FROM + Attivita.NOME;
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -91,7 +92,7 @@ class DBManagerAttivita {
 
         String selectQuery =  "SELECT " +
                 Attivita.CAMPO_OGGETTO +
-                " FROM " + Attivita.NOME +
+                FROM + Attivita.NOME +
                 " WHERE " +  Attivita.CAMPO_PRIORITA + "  LIKE  '%" + minimo + "%' "
                 ;
 
@@ -120,7 +121,7 @@ class DBManagerAttivita {
                 Attivita.CAMPO_INIZIO + "," +
                 Attivita.CAMPO_FINE + "," +
                 Attivita.CAMPO_PRIORITA +
-                " FROM " + Attivita.NOME +
+                FROM + Attivita.NOME +
                 " WHERE " +  Attivita.CAMPO_FINE + "  LIKE  '%" + ricerca + "%'"
                 ;
 
